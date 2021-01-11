@@ -1,6 +1,7 @@
 # Contribution Inventaire 
 
-:star2: Merci d'avance pour votre contribution :grin:
+:star2: Merci d'avance pour votre contribution.:grin: 
+
 Les instructions suivantes décrivent comment contribuer au projet en tant que front-end, back-end ou DBA.
 
 ## Configuration
@@ -20,7 +21,11 @@ Pour ce faire, il faut:
 
 ## Organisation 
 
-### Developpement Front-end
+Le suivi des taches se fera sur Trello, pensez a etre dans notre [tableau](https://trello.com/b/8y7D5iSA/projet-inventaire).
+
+Une tache vous sera assigne ou vous pourrez creer vos propres taches.
+
+### Front-end
 Ici le developpement se fera dans les repertoires suivants:
 - views pour les vues php
 - theme pour les assets
