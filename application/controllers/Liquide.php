@@ -23,6 +23,21 @@ class Liquide extends CI_Controller {
 
     }
 
+    public function index(){
+        // Creation des donnees Epicerie
+        if ($this->creation_activite()) {
+            if ($this->creation_famille()) {
+                if ($this->creation_produits()) {
+                    return $this->output
+                                ->set_content_type('application/json')
+                                ->set_output(json_encode(array('message' => 'Liquide: Creation des donnees effectues avec succes')));
+                }
+            }
+        }
+
+        echo "Un probleme est survenu";
+    }
+
     public function creation_activite(){
 
         $activite_liquide = [
@@ -31,9 +46,7 @@ class Liquide extends CI_Controller {
             "id_cat" => 2
         ];
 
-        if ($this->activite_model->ajouter_activite($activite_liquide)) {
-            echo "<h1>Insertion avec succes</h1>";
-        }
+        return $this->activite_model->ajouter_activite($activite_liquide);
     }
 
     public function creation_famille(){
@@ -45,6 +58,7 @@ class Liquide extends CI_Controller {
 
         if (empty($values)) {
             echo "<h1>Aucune donnees recoltes !!</h1>";
+            return FALSE;
         } else {
 
             foreach ($values as $row) {
@@ -58,11 +72,11 @@ class Liquide extends CI_Controller {
                 if (!$this->famille_model->ajouter_famille($famille)) {
                     echo "Erreur d'insertion \n";
                     echo $row;
-                    die;
+                    return FALSE;
                 }
             }
 
-            echo "<h1>Insertion des familles avec succes</h1>";
+            return TRUE;
         }
     }
 
@@ -75,6 +89,7 @@ class Liquide extends CI_Controller {
 
         if (empty($values)) {
             echo "<h1>Aucune donnees recoltes !!</h1>";
+            return FALSE;
         } else {
 
             foreach ($values as $row) {
@@ -90,11 +105,11 @@ class Liquide extends CI_Controller {
                 if (!$this->produit_model->creer($produit)) {
                     echo "Erreur d'insertion du produit \n";
                     echo $row;
-                    die;
+                    return FALSE;
                 }
             }
 
-            echo "<h1>Insertion des produits avec succes</h1>";
+            return TRUE;
         }
     }
 }
