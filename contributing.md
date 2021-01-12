@@ -19,6 +19,24 @@ Pour ce faire, il faut:
 
 *NB: Penser a faire des pull request de votre branche develop de temps a autre afin d'eviter les conflits*
 
+### configurer l'url du projet
+
+Pour pouvoir voir les modifications via l'url de votre navigateur, pensez a modifier la variable _base_url_ dans le fichier **application/config/config.php**
+
+```bash
+  $config['base_url'] = 'url_du_projet';
+```
+
+- Si vous deployez avec Apache, l'url de votre projet peut se former du nom de votre dossier, exemple
+```bash
+  http://localhost/[nom_du_projet]
+```
+- Si vous utilisez le serveur web integre de php, mettez l'url que vous generez
+```bash
+ php -S localhost:3000
+```
+Cet code permet d'acceder au projet via *http://localhost:3000/* et ce peut importe ou se trouve le dossier
+
 ## Organisation 
 
 Le suivi des taches se fera sur Trello, pensez a etre dans notre [tableau](https://trello.com/b/8y7D5iSA/projet-inventaire).
