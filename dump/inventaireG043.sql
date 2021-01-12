@@ -337,7 +337,7 @@ CREATE TABLE `succursale` (
   `nom_cecado` varchar(255) NOT NULL,
   `nom_gerant` varchar(255) NOT NULL,
   PRIMARY KEY (`id_surc`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,6 +346,7 @@ CREATE TABLE `succursale` (
 
 LOCK TABLES `succursale` WRITE;
 /*!40000 ALTER TABLE `succursale` DISABLE KEYS */;
+INSERT INTO `succursale` VALUES (1,'CECADO ADL - AEROPORT','G043','KOLEVI COLLEY GAVA');
 /*!40000 ALTER TABLE `succursale` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -358,4 +359,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-11 23:59:45
+-- Dump completed on 2021-01-12 11:10:01
