@@ -83,3 +83,8 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+// Constantes pour Sheet
+defined('NOM_APPLICATION') OR define('NOM_APPLICATION', 'Google Sheet Inventaire');
+defined('LIEN_SHEET_EPICERIE') OR define('LIEN_SHEET_EPICERIE', '1oHDNHEtfH7qM7dvpHuXrLnOlPkUKFYim0ndl-_FmfWA');
+defined('LIEN_SHEET_LIQUIDE') OR define('LIEN_SHEET_LIQUIDE', '1BKS5uhDvIyfzoPuxMvBNl5DNlbuNNGZDBbdLMvOlrDY');
