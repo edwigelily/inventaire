@@ -31,4 +31,6 @@ jobs:
           ftp-username: ${{ secrets.FTP_USERNAME }}
            # FTP account password
           ftp-password: ${{ secrets.FTP_PASSWORD }}
+          # Local directory
+          server-dir: www
       
