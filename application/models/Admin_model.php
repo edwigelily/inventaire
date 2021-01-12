@@ -37,7 +37,7 @@ class Admin_model extends CI_Model
     {
         $this->nom_ad   = $params['nom_ad'];
         $this->mot_passe_ad  = $params['mot_passe_ad'];
-        $query = $this->db->get_where('admin', array('nom_ad' => $params['nom_ad'], 'mot_passe_ad' => $params['mot_passe_ad']));
+        $query = $this->db->get_where($this->table, array('nom_ad' => $params['nom_ad'], 'mot_passe_ad' => $params['mot_passe_ad']));
 
         return $query->row();
     }
@@ -45,10 +45,7 @@ class Admin_model extends CI_Model
     //Supprimer admin
     public function supprimer_admin($params)
     {
-        $this->nom_ad = $params['nom_ad']; 
-        $this->mot_passe_ad  = $params['mot_passe_ad'];
-
-        return $this->db->delete('admin', array('id' => $params['id']));
+        return $this->db->delete($this->table, array('id' => $params['id']));
     }
 
 }
