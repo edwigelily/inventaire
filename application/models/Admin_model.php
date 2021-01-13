@@ -35,9 +35,9 @@ class Admin_model extends CI_Model
     //connexion admin
     public function connexion($params)
     {
-        $this->nom_ad   = $params['nom_ad'];
+        $this->email_ad   = $params['email_ad'];
         $this->mot_passe_ad  = $params['mot_passe_ad'];
-        $query = $this->db->get_where($this->table, array('nom_ad' => $params['nom_ad'], 'mot_passe_ad' => $params['mot_passe_ad']));
+        $query = $this->db->get_where($this->table, array('email_ad' => $params['email_ad'], 'mot_passe_ad' => $params['mot_passe_ad']));
 
         return $query->row();
     }
