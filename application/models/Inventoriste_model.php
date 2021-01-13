@@ -36,9 +36,9 @@ class Inventoriste_model extends CI_Model
     //connexion inventoriste
     public function connexion($params)
     {
-        $this->nom_inv   = $params['nom_inv'];
+        $this->email_inv   = $params['email_inv'];
         $this->mot_passe_inv  = $params['mot_passe_inv'];
-        $query = $this->db->get_where($this->table, array('nom_inv' => $params['nom_inv'], 'mot_passe_inv' => $params['mot_passe_inv']));
+        $query = $this->db->get_where($this->table, array('email_inv' => $params['email_inv'], 'mot_passe_inv' => $params['mot_passe_inv']));
 
         return $query->row();
     }
