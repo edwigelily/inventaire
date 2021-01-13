@@ -41,6 +41,13 @@ class Produit_model extends CI_Model
         return $this->db->query($sql)-> result(); 
     }
 
+    public function lister_produit_qte_famille($code_fam)
+    {
+        $sql = "SELECT code_fam,produit.folio,libelle_prod,prix,q_surf,q_res,s_surf,s_res
+                 FROM produit INNER JOIN quantite ON produit.folio = quantite.folio WHERE code_fam=?";
+        return $this->db->query($sql, $code_fam)-> result(); 
+    }
+
     public function lister_produit_famille($id)
     {
         $sql = "SELECT * FROM produit WHERE code_fam=?";

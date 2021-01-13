@@ -24,6 +24,14 @@ class Famille_model extends CI_Model
         return $query->result();
     }
 
+    public function famille_categorie($id_cat)
+    {
+        $sql = "SELECT * FROM famille
+        INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?";
+
+        return $this->db->query($sql, $id_cat)-> result();
+    }
+
     public function ajouter_famille($params) //fonction pour ajouter une famille
     {
 
