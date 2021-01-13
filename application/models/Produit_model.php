@@ -65,4 +65,10 @@ class Produit_model extends CI_Model
     {
         return $this->db->delete($this->table, array($this->id => $id));
     }
+
+     //modifier le prix
+     public function mettre_produit_hors_gamme($id)
+     {
+         return $this->db->update($this->table, array('code_fam' => 0), array($this->id => $id));
+     }
 }
