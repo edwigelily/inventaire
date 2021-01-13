@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    color: #fff;
+    font-family: 'Inconsolata', monospace;
+}
+ main .contenair{
+     margin: 8% auto;
+     max-width: 29%;
+     text-transform: uppercase;
+ }
+
+ main .contenair .header{
+    background-color: rgb(26, 59, 122,1);
+    text-align: center;   
+    font-size: 2.5em;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 2rem;
+    letter-spacing: .3rem;
+}
+
+main .contenair form{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 25px;
+    box-shadow: 0 0 5px #ccc;
+    color: rgb(26, 59, 122,1);
+}
+
+main .contenair form label{
+    font-size: .8rem;
+    margin: 10px 0;
+}
+
+main .contenair form input{
+    font-size: 1.8rem;
+    background: rgb(204 204 204 / 59%);
+    border: none;
+    outline: none;
+}
+
+main .contenair form button{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1.5rem;
+    border: none;
+    outline: none;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: .8rem;
+    color: #fff;
+    background-color: #5dce62;
+}
+
