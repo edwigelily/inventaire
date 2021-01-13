@@ -277,7 +277,7 @@ CREATE TABLE `produit` (
   `id_prod` int NOT NULL AUTO_INCREMENT,
   `folio` int NOT NULL,
   `libelle_prod` varchar(255) NOT NULL,
-  `code_fam` int NOT NULL,
+  `code_fam` int DEFAULT NULL,
   `prix` int NOT NULL,
   PRIMARY KEY (`folio`),
   UNIQUE KEY `id_prod` (`id_prod`),
@@ -359,4 +359,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-12 11:10:01
+-- Dump completed on 2021-01-13 14:37:26
