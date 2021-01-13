@@ -67,8 +67,8 @@ class Produit_model extends CI_Model
     }
 
      //modifier le prix
-     public function mettre_produit_hors_gamme($id, $code_fam)
+     public function mettre_produit_hors_gamme($id)
      {
-         return $this->db->update($this->table, array('code_fam' => $code_fam), array($this->id => $id));
+         return $this->db->update($this->table, array('code_fam' => 0), array($this->id => $id));
      }
 }
