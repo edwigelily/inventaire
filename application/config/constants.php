@@ -86,7 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 // Configuration de l'environnement
 defined('DEV_URL') OR define('DEV_URL', "http://localhost/inventaire"); // L'url lorsque nous sommes en local
-defined('PROD_URL') OR define('PROD_URL', "https://business.ecole241.org"); // L'url lorsque nous sommes en ligne
+defined('PROD_URL') OR define('PROD_URL', "http://dynamo74.alwaysdata.net/"); // L'url lorsque nous sommes en ligne
 
 
 // Constantes pour Sheet
