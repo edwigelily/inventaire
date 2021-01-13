@@ -24,10 +24,10 @@
                 <h3>CHOISIR UNE GAMME</h3>
                 <div class="choix">
                     <ul>
-                        <li> <a href="#">code famille</a> </li>
-                        <li><a href="">folio</a></li>
-                        <li><a href="">libellé</a></li>
-                        <li><a href="">quantité en stock</a></li>
+                        <li> <a href="#">Epicerie</a> </li>
+                        <li><a href="">Liquide</a></li>
+                        <!-- <li><a href="">libellé</a></li>
+                        <li><a href="">quantité en stock</a></li> -->
                     </ul>
                 </div>
             </div>
