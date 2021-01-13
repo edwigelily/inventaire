@@ -1,0 +1,185 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inconsolata', monospace;
+}
+
+.main-contenair header{
+    background-color: rgb(26, 59, 122,1);
+}
+
+.main-contenair .header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-contenair .header .symbole{
+    color: rgb(26, 59, 122,1);
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: .7rem;
+    padding: 5px 40px;
+}
+
+.main-contenair .header .btn{
+    text-transform: capitalize;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #d75e5e;
+    cursor: pointer;
+}
+.main-contenair .header .btn i{
+    color: #d75e5e;
+    background-color: #fff; 
+    margin-left: 0.8rem; 
+}
+
+.main-contenair .header h2{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.main-contenair  .second-section-header{
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto 0;
+    padding-bottom: 2rem;
+}
+
+
+.main-contenair  .second-section-header ul{
+    list-style: none;
+    display: flex;
+   
+}
+
+.main-contenair  .second-section-header ul li{
+    border-radius: 3px;
+    background: rgba(238,238,238,1);
+    margin: 0.1rem;
+    padding: 7px 30px;
+}
+
+.main-contenair  .second-section-header ul li:nth-of-type(3){
+    padding: 7px 120px;
+}
+
+.main-contenair  .second-section-header ul li a{
+    color: rgba(112,112,112,0.6000000238418579);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .9rem;
+}
+
+.main-contenair  .second-section-header form{
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 0 5px;
+    width: 12%;
+    position: relative;
+}
+
+.main-contenair  .second-section-header form input{
+    background: transparent none;
+    border: none;
+    outline: none;
+    width: 90%;
+    position: relative;
+    top: 8px;
+}
+
+.main-contenair  .second-section-header form button{
+    background: transparent none;
+    border: none;
+    outline: none;
+    line-height: normal;
+    font-size: 1.5rem;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.main-contenair  .second-section-header form button i{
+    font-size: 1rem;
+    position: relative;
+    top: -5px;
+}
+::-webkit-input-placeholder{
+    color: rgba(255, 255, 255, 0.774);
+    font-size: .8rem;
+}
+
+:-ms-input-placeholder{
+    color: rgba(255, 255, 255, 0.603);
+    font-size: .8rem;
+}
+
+:-moz-placeholder{
+    color: rgba(255, 255, 255, 0.603);
+    font-size: .8rem;
+}
+
+/* -=================== * bouton hors champ *===================- */
+
+.btn-champ{
+    border: 1px solid #fff;
+    border-radius: 3px;
+    line-height: normal;
+    margin-left: .4rem;
+    padding: 5px;
+}
+
+.btn-champ a{
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+    margin: .4rem;
+}
+
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+    margin: 5px auto 10px;
+    width: 100%;
+}
+
+table, td{
+ 	border: 2px solid #fff;
+    padding: 10px;	
+    background: rgba(238,238,238,1);
+    color: rgba(26,59,122,1);
+    text-align: center;
+    text-transform: uppercase;
+    /* width: 100%; */
+ }
+
+ th{
+    padding: 10px;
+    border: 2px solid #fff;
+    text-align: center;	
+ }
+
+ .first-head{
+    background: rgba(26,59,122,1);
+    color: #fff;   
+ }
+
+ /* ---==========================* RESPONSIVE *=========================== */
+ @media (min-width: 992px) { 
+    body{
+        margin: 0;
+    }
+ }
+
