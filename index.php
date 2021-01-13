@@ -35,6 +35,8 @@
  * @since	Version 1.0.0
  * @filesource
  */
+	// Include Composer 
+	include_once './vendor/autoload.php';
 
 /*
  *---------------------------------------------------------------
@@ -53,8 +55,10 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
+$_SERVER['CI_ENV'] = (strpos($_SERVER['HTTP_HOST'], 'dynamo74.alwaysdata.net') !== FALSE) ? 'production' : 'development';
+
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
