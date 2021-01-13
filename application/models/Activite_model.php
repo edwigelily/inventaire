@@ -20,14 +20,14 @@ class Activite_model extends CI_Model
 
     public function toutes_les_activite() // fonction pour lister toutes les activités
     {
-        $query = $this->db->get($this->activite);
+        $query = $this->db->get($this->table);
         return $query->result();
     }
 
     public function ajouter_activite($params) //fonction pour ajouter activité
     {
 
-        return $this->db->insert($this->activite, $params);
+        return $this->db->insert($this->table, $params);
     }
 
 }
