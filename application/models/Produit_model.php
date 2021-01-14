@@ -74,6 +74,12 @@ class Produit_model extends CI_Model
         return $this->db->update($this->table, array('prix' => $prix), array($this->id => $id));
     }
 
+    //modifier le prix
+    public function modifier($folio, $params)
+    {
+        return $this->db->update($this->table, $params, array($this->id => $folio));
+    }
+
     //supprimr un produit
     public function supprimer($id)
     {
