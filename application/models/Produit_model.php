@@ -39,11 +39,25 @@ class Produit_model extends CI_Model
         return $this->db->query($sql)->result();
     }
 
+    // Renvoyer une categorie
+    public function recherche_categorie($id_cat)
+    {
+        $sql = "SELECT * FROM categorie WHERE id_cat = ?";
+        return $this->db->query($sql, $id_cat)->row();   
+    }
+
     public function lister_produit_qte()
     {
         $sql = "SELECT code_fam,produit.folio,libelle_prod,prix,q_surf,q_res,s_surf,s_res
                  FROM produit INNER JOIN quantite ON produit.folio = quantite.folio";
         return $this->db->query($sql)->result();
+    }
+
+    public function lister_produit_qte_famille($code_fam)
+    {
+        $sql = "SELECT code_fam,produit.folio,libelle_prod,prix,q_surf,q_res,s_surf,s_res
+                 FROM produit INNER JOIN quantite ON produit.folio = quantite.folio WHERE code_fam=?";
+        return $this->db->query($sql, $code_fam)-> result(); 
     }
 
     public function lister_produit_famille($id)
@@ -70,6 +84,12 @@ class Produit_model extends CI_Model
     public function modifier_prix($id, $prix)
     {
         return $this->db->update($this->table, array('prix' => $prix), array($this->id => $id));
+    }
+
+    //modifier le prix
+    public function modifier($folio, $params)
+    {
+        return $this->db->update($this->table, $params, array($this->id => $folio));
     }
 
     //supprimr un produit

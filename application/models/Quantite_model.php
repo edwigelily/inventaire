@@ -29,7 +29,7 @@ class Quantite_model extends CI_Model
 
     public function rechercher($id)
     {
-        $query = $this->db->get_where($this->table, array($this->id => $id));
+        $query = $this->db->get_where($this->table, array('folio' => $id));
         return $query->row();
     }
 }

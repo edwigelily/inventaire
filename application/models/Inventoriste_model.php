@@ -27,6 +27,11 @@ class Inventoriste_model extends CI_Model
         return $query->result();
     }
 
+    public function attribuer_categorie($id_inv, $id_cat)
+    {
+        return $this->db->update($this->table, array('id_cat' => $id_cat), array($this->id => $id_inv));
+    }
+
     //fonction pour ajouter un inventoriste
     public function ajouter_inventoriste($params)
     {
