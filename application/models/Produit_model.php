@@ -57,7 +57,7 @@ class Produit_model extends CI_Model
     public function lister_produit_categorie($id)
     {
         $sql = "SELECT * FROM produit INNER JOIN(SELECT code_fam FROM famille
-                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?";
+                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?)AS alpha";
          return $this->db->query($sql,$id)-> result();
     }
     
