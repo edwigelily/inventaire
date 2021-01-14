@@ -10,8 +10,41 @@ class Inventoriste extends CI_Controller
         if (!$this->est_connecte()) {
             redirect('inventoriste/connexion_inventoriste');
         }
-        $this->load->view('accueil');
+
+        $inventoriste = $this->inventoriste_model->par_email($this->session->userdata('email_invent'));
+
+
+        if (!$inventoriste) {
+            redirect('inventoriste/connexion_inventoriste');
+        }
+        //listing des produits
+        $categories = $this->produit_model->lister_tout_categorie();
+
+
+        $this->load->view('accueil', ['categories' => $categories]);
     }
+
+    //listing des categorie par choix inventoriste
+    public function listing($id)
+    {
+        if (!$this->est_connecte()) {
+            redirect('inventoriste/connexion_inventoriste');
+        }
+
+        $inventoriste = $this->inventoriste_model->par_email($this->session->userdata('email_invent'));
+
+
+        if (!$inventoriste) {
+            redirect('inventoriste/connexion_inventoriste');
+        }
+        $idcat = $id;
+        $produit = $this->produit_model->lister_produit_categorie($idcat);
+        var_dump($produit);
+        die;
+        $this->load->view('listing');
+    }
+
+
     //gestion de l'inventoriste connecté
 
     private function est_connecte()
@@ -53,6 +86,7 @@ class Inventoriste extends CI_Controller
 
         //insertion d'information
         $inventoriste = $this->inventoriste_model->connexion($param);
+
         if ($inventoriste) {
             $this->session->set_userdata('token_invent', md5(time()));
             $this->session->set_userdata('nom_invent', $inventoriste->nom_inv);
