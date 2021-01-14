@@ -56,24 +56,88 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function listing_gamme()
+    public function listing_gamme($id_cat=1)
     {
-        $produits = $this->produit_model->lister_tout_produit();
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
 
-        var_dump($produits);
+        // Configuration de la pagination
+        $this->load->library('pagination');
+
+		$config['base_url'] = site_url('admin/listing_gamme');
+		$config['total_rows'] = $this->famille_model->nombre_famille_categorie($id_cat);
+		$config["per_page"] = 2;
+        $config["uri_segment"] = 3;
+        
+        // var_dump($this->famille_model->nombre_famille_categorie($id_cat));
+
+        $this->pagination->initialize($config);
+        
+        $page = empty($this->input->get('p')) ? 0 : $this->input->get('p');
+        $familles = $this->famille_model->famille_categorie_intervalle($id_cat, $config['per_page'], $page);
+
+
+        foreach($familles as $famille){
+            // On recupere les produits d'une famille
+            $famille->produits = $this->produit_model->lister_produit_famille($famille->code_fam);
+        }
+
+
+        $data = [
+            "familles" => $familles,
+            "liens" => $this->pagination->create_links()
+        ];
+
+        $this->load->view('admin/liste_gamme', $data);
     }
 
-    public function modifier_prix_produit()
+    public function modifier_produit()
     {
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
+
+        // Recuperation des informations
         $prix = $this->input->post('prix');
+        $libelle = $this->input->post('libelle');
         $folio = $this->input->post('folio');
 
-        if (empty($folio)) {
-            echo "Is none";
-        } else {
-            var_dump($folio);
+        $produit = [
+            'prix' => $prix,
+            'libelle_prod' => $libelle,
+        ];
+
+        if($this->produit_model->modifier($folio, $produit))
+        {
+            $this->session->set_flashdata('message-success', "Mis a jour correcte du produit $folio !!");
+            redirect('admin/listing_gamme');
         }
-        die;
+    }
+
+    public function ajouter_produit()
+    {
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
+
+        // Recuperation des informations
+        $prix = $this->input->post('prix');
+        $libelle = $this->input->post('libelle');
+        $folio = $this->input->post('folio');
+        $code_famille = $this->input->post('code');
+
+        $produit = [
+            'folio' => $folio,
+            'prix' => $prix,
+            'code_fam' => $code_famille,
+            'libelle_prod' => $libelle
+        ];
+
+        if ($this->produit_model->creer($produit)) {
+            $this->session->set_flashdata('message-success', "Nouveau!!: Le produit $folio a ete ajoute");
+            redirect('admin/listing_gamme');
+        }
     }
 
     public function inventaire($id_cat=1)

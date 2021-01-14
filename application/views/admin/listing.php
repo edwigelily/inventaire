@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/nom_gamme.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= theme_url() ?>assets/css/listing_admin.css">
@@ -17,9 +18,16 @@
         <div class="main-contenair">
             <header>
                 <div class="header">
-                    <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
+                <a href="<?= site_url('admin') ?>" class="symbole">Retour au menu <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     <h2>ADMINISTRATEUR</h2>
-                    <span class="btn">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></span>
+                    <div class="btn-group-vertical " role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger rounded-0">
+                            Déconnexion<i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" data-toggle="modal" data-target="#ModalAjouterProduit" class="btn btn-success mt-1 rounded-0">
+                            Generer le recapitulatif
+                        </button>
+                    </div>
                 </div>
                 <div class="second-section-header">
                     <ul>
@@ -86,6 +94,8 @@
         </div>
 
     </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 
 </html>

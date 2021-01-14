@@ -39,6 +39,13 @@ class Produit_model extends CI_Model
         return $this->db->query($sql)->result();
     }
 
+    // Renvoyer une categorie
+    public function recherche_categorie($id_cat)
+    {
+        $sql = "SELECT * FROM categorie WHERE id_cat = ?";
+        return $this->db->query($sql, $id_cat)->row();   
+    }
+
     public function lister_produit_qte()
     {
         $sql = "SELECT code_fam,produit.folio,libelle_prod,prix,q_surf,q_res,s_surf,s_res

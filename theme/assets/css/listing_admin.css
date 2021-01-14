@@ -30,7 +30,7 @@ body{
     padding: 5px 40px;
 }
 
-.main-contenair .header .btn{
+/* .main-contenair .header .btn{
     text-transform: capitalize;
     padding: 5px 10px;
     border: none;
@@ -38,7 +38,7 @@ body{
     color: #fff;
     background-color: #d75e5e;
     cursor: pointer;
-}
+} */
 .main-contenair .header .btn i{
     color: #d75e5e;
     background-color: #fff; 
@@ -147,6 +147,14 @@ body{
     color: #ffffff;
 }
 
+/* ===================== * Pagination * ============ */
+.pagination{
+    position: fixed;
+    bottom: 8px;
+    right: 3px;
+    opacity: .6;
+}
+
 /* -=================== * bouton hors champ *===================- */
 
 .btn-champ{
@@ -192,6 +200,17 @@ table, td{
     background: rgba(26,59,122,1);
     color: #fff;   
     margin-bottom: 1em;
+ }
+
+ .product{
+     cursor: pointer;
+ }
+
+ .alert{
+     position: absolute;
+     bottom: 10px;
+     width: 40%;
+     left: 5%;
  }
 
  /* ---==========================* RESPONSIVE *=========================== */

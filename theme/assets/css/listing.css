@@ -176,6 +176,19 @@ table, td{
     color: #fff;   
  }
 
+ /* ===================== * Pagination * ============ */
+.pagination{
+    position: fixed;
+    bottom: 8px;
+    right: 3px;
+    opacity: .6;
+}
+
+.product{
+    cursor: pointer;
+}
+
+
  /* ---==========================* RESPONSIVE *=========================== */
  @media (min-width: 992px) { 
     body{

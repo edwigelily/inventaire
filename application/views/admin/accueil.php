@@ -25,7 +25,7 @@
                 <p class="text-center text-white font-size mb-2">Que voulez vous faire ?</p>
                 <div class="choix">
                     <ul>
-                        <li> <a href="#">Administrer une gamme</a> </li>
+                        <li> <a href="<?= site_url('admin/listing_gamme') ?>">Administrer une gamme</a> </li>
                         <li><a href="">Gestionnaire de compte</a></li>
                         <li><a href="<?= site_url('admin/inventaire') ?>">Lancer un inventaire</a></li>
                         <li><a href="">archives</a></li>
