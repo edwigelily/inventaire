@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,28 @@
     <link rel="stylesheet" href="<?= theme_url() ?>assets/css/connexion.css">
     <title>Connexion</title>
 </head>
+
 <body>
     <main>
         <div class="contenair">
-            <div class="header">  inventaire <br> G043 </div>
-               
-           
-            <form action="">
+            <div class="header"> inventaire <br> G043 </div>
+            <?php if ($this->session->flashdata('message')) : ?>
+                <p style="padding: 5px 10px; font-weight: bold; color: red; margin:0;"><?= $this->session->flashdata('message'); ?></p>
+            <?php endif; ?>
+            <?php if ($this->session->flashdata('message-success')) : ?>
+                <p style="padding: 5px 10px; font-weight: bold; color: #008148; margin:0;"><?= $this->session->flashdata('message-success'); ?></p>
+            <?php endif; ?>
+
+            <form action="<?= site_url('inventoriste/traitement_connexion_inventoriste') ?>" method="post">
                 <label for="identifiant">identifiant</label>
-                <input type="text" name="" id="identifiant">
+                <input type="text" name="identtifiant" id="identifiant">
 
                 <label for="mdp">mot de passe</label>
-                <input type="text" name="" id="mdp">
+                <input type="password" name="mdp" id="mdp">
                 <button type="submit">se connecter</button>
             </form>
         </div>
     </main>
 </body>
+
 </html>
