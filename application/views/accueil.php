@@ -18,14 +18,18 @@
         <div class="main-contenair">
             <div class="header">
                 <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
-                <span class="btn">déconnexion <i class="fa fa-running" aria-hidden="true"></i></span>
+                <span class="btn"><a href="<?= site_url('inventoriste/deconnexion') ?>">déconnexion</a> <i class="fa fa-running" aria-hidden="true"></i></span>
             </div>
             <div class="block-main">
                 <h3>CHOISIR UNE GAMME</h3>
                 <div class="choix">
                     <ul>
-                        <li> <a href="#">Epicerie</a> </li>
-                        <li><a href="">Liquide</a></li>
+                        <?php foreach ($categories as $categorie) : ?>
+
+                            <li><a href="<?= site_url('inventoriste/listing/' . $categorie->id_cat) ?>"><?= $categorie->nom_cat ?></a></li>
+
+                        <?php endforeach; ?>
+
                         <!-- <li><a href="">libellé</a></li>
                         <li><a href="">quantité en stock</a></li> -->
                     </ul>
