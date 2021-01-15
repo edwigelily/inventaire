@@ -93,7 +93,7 @@ class Epicerie extends CI_Controller {
                     "code_fam" => $row[0],
                     "folio" => $row[1],
                     "libelle_prod" => $row[2],
-                    "prix" => $row[3]
+                    "prix" => (int)str_replace(" ", "", $row[3])
                 ];
 
                 // var_dump($produit);

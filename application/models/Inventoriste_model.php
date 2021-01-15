@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Inventoriste_model extends CI_Model
 {
-    public $nom_inv ;
+    public $nom_inv;
     public $email_inv;
     public $mot_passe_inv;
     public $id_surc;
@@ -27,8 +27,13 @@ class Inventoriste_model extends CI_Model
         return $query->result();
     }
 
+    public function attribuer_categorie($id_inv, $id_cat)
+    {
+        return $this->db->update($this->table, array('id_cat' => $id_cat), array($this->id => $id_inv));
+    }
+
     //fonction pour ajouter un inventoriste
-    public function ajouter_inventoriste($params) 
+    public function ajouter_inventoriste($params)
     {
         return $this->db->insert($this->table, $params);
     }
@@ -43,10 +48,16 @@ class Inventoriste_model extends CI_Model
         return $query->row();
     }
 
+    //Recupérer un inventoriste en fonction de son adresse e-mail
+    public function par_email($email)
+    {
+        $query = $this->db->get_where($this->table, array('email_inv' => $email));
+        return $query->row();
+    }
+
     //Supprimer inventoriste
     public function supprimer_inventoriste($params)
     {
         return $this->db->delete($this->table, array('id' => $params['id']));
     }
-
 }
