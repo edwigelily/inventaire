@@ -27,10 +27,15 @@ class Produit_model extends CI_Model
         
     }
 
-    public function rechercher($id)
+    public function rechercher($folio)
     {
-        $query = $this->db->get_where($this->table, array($this->id => $id));
+        $query = $this->db->get_where($this->table, array($this->folio => $folio));
         return $query->row();
+    }
+
+     public function modifier($id)
+    {
+        return $this->db->update($this->table, $this, array($this->id => $id));
     }
 }
 
