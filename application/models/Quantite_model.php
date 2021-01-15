@@ -33,9 +33,9 @@ class Quantite_model extends CI_Model
         return $query->row();
     }
 
-     public function modifier($id)
+     public function modifier($folio,$params)
     {
-        return $this->db->update($this->table, $this, array($this->id => $id));
+        return $this->db->update($this->table, $params, array('folio' => $folio));
     }
 }
 
