@@ -7,6 +7,7 @@ class Produit_model extends CI_Model
     public $libelle_prod;
     public $prix;
     public $code_fam;
+    public $h_gamme;
 
 
     // Nom de la table
@@ -111,9 +112,9 @@ class Produit_model extends CI_Model
         return $this->db->delete($this->table, array($this->id => $id));
     }
 
-    //modifier le prix
-    public function mettre_produit_hors_gamme($id)
-    {
-        return $this->db->update($this->table, array('code_fam' => 0), array($this->id => $id));
-    }
+     //modifier le prix
+     public function mettre_produit_hors_gamme($id)
+     {
+         return $this->db->update($this->table, array('h_gamme' => 0), array($this->id => $id));
+     }
 }
