@@ -134,8 +134,8 @@ class Inventoriste extends CI_Controller
         } else {
             $produit = [
                 "folio" => $folio,
-                "q_res" => $quantite_res,
-                "q_surf" => $quantite_surf
+                "q_res" => empty($quantite_res) ? 0 : $quantite_res,
+                "q_surf" => empty($quantite_surf) ? 0 : $quantite_surf
             ];
 
             if ($this->quantite_model->creer($produit)) {
@@ -145,6 +145,73 @@ class Inventoriste extends CI_Controller
         }
     }
 
+    // Rechercher produit
+    public function recherche_produit()
+    {
+        // Verification utilisateur
+        if (!$this->est_connecte()) {
+            redirect('inventoriste/connexion_inventoriste');
+        }
+
+        $inventoriste = $this->inventoriste_model->par_email($this->session->userdata('email_invent'));
+
+        if (!$inventoriste) {
+            redirect('inventoriste/connexion_inventoriste');
+        }
+
+        // Chargement des modeles
+        $this->load->model('quantite_model');
+
+        // Etape 1: On recupere la valeur
+        $value = $this->input->get("q");
+
+        // On filtre, on verifie si c'est un folio ou pas
+        $pattern = '/^\d+$/';
+        preg_match($pattern, $value, $matches);
+
+        if (empty($matches)) {
+            // Si c'est un libelle
+        } else {
+            // Si c'est un numero
+            $produit_exacte = $this->produit_model->rechercher_produit_folio($value);
+            $produits_similaires = $this->produit_model->rechercher_produits_similaire_folio($value);
+
+            // Etape 3 : On trouve les quantites de ces produits sinon on attribue 0 partout
+            if (!empty($produit_exacte)) {
+                if ($quantite = $this->quantite_model->rechercher($produit_exacte->folio)) {
+                    $produit_exacte->q_surf = $quantite->q_surf;
+                    $produit_exacte->q_res = $quantite->q_res;
+                } else {
+                    $produit_exacte->q_surf = 0;
+                    $produit_exacte->q_res = 0;
+                }
+    
+            }
+
+            if (!empty($produits_similaires)) {
+                foreach($produits_similaires as $produit)
+                {
+                    if($quantite = $this->quantite_model->rechercher($produit->folio))
+                    {
+                        $produit->q_surf = $quantite->q_surf;
+                        $produit->q_res = $quantite->q_res;
+                    } else {
+                        $produit->q_surf = 0;
+                        $produit->q_res = 0;
+                    }
+                }
+            }
+
+            $data = [
+                'produit' => $produit_exacte,
+                'produits_similaires' => $produits_similaires,
+                'value' => $value
+            ];
+
+            $this->load->view('resultat_folio', $data);
+        }
+
+    }
 
     //gestion de l'inventoriste connecté
 

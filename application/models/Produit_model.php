@@ -76,8 +76,21 @@ class Produit_model extends CI_Model
     public function lister_produit_categorie($id)
     {
         $sql = "SELECT * FROM produit INNER JOIN(SELECT code_fam FROM famille
-                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?";
+                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?) AS juju";
         return $this->db->query($sql, $id)->result();
+    }
+
+    public function rechercher_produit_folio($folio)
+    {
+        return $this->db->get_where($this->table, array('folio' => $folio))->row();
+    }
+
+    public function rechercher_produits_similaire_folio($folio)
+    {
+        $this->db->like('folio', $folio);
+        $query = $this->db->get($this->table);
+
+        return $query->result();
     }
 
     //modifier le prix

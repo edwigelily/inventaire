@@ -19,13 +19,13 @@
             <header>
                 <div class="header">
                     <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
-                    <h2><?= $nom_categorie ?></h2>
+                    <h2>Resultats</h2>
                     <span class="btn">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></span>
                 </div>
                 <div class="container my-4 py-3">
                     <form class="form-inline row" action="<?= site_url('inventoriste/recherche_produit') ?>">
                         <div class="col-lg-8">
-                            <input class="form-control w-100" name="q" type="search" placeholder="Entrer le libelle ou le folio d'un produit" aria-label="Search">
+                            <input class="form-control w-100" value="<?= isset($value) ? $value : '' ?>" name="q" type="search" placeholder="Entrer le libelle ou le folio d'un produit" aria-label="Search">
                         </div>
                         <button class="btn btn-primary my-2 my-sm-0" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -36,7 +36,7 @@
             <!-- ============================* liste *========================= -->
             <div class="table">
                 <!-- ================== Pagination ================= -->
-                <?= $liens ?>
+                <!-- <?= $liens ?> -->
 
                 <?php if ($this->session->flashdata('message-success')) :?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -58,24 +58,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($familles)): 
-                            foreach($familles as $famille) :?>
-                                <?php if (!empty($famille->produits)) : ?>
-                                    <tr class="first-head">
-                                        <th colspan="2">code famille: <?= $famille->nom ?></th>
-                                        <th colspan="8"> nom de la famille: <?= $famille->code_fam ?></th>
-                                    </tr>
-                                    <?php foreach($famille->produits as $produit): ?>
-                                        <tr data-key="<?= $produit->code_fam ?>">
-                                            <td class="product"><?= $produit->folio ?></td>
-                                            <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
-                                            <td><?= $produit->prix ?></td>
-                                            <td><?= $produit->q_surf ?></td>
-                                            <td><?= $produit->q_res ?></td>
-                                            <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                        <!-- le produit identique -->
+                        <?php if (!empty($produit)) : ?>
+                            <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
+                                <td class="product"><?= $produit->folio ?></td>
+                                <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                <td><?= $produit->prix ?></td>
+                                <td><?= $produit->q_surf ?></td>
+                                <td><?= $produit->q_res ?></td>
+                                <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
+                            </tr>
+                        <?php endif; ?>
+
+                        <!-- fin -->
+
+                        <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
+                            <?php foreach($produits_similaires as $produit): ?>
+                                <tr data-key="<?= $produit->code_fam ?>">
+                                    <td class="product"><?= $produit->folio ?></td>
+                                    <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                    <td><?= $produit->prix ?></td>
+                                    <td><?= $produit->q_surf ?></td>
+                                    <td><?= $produit->q_res ?></td>
+                                    <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
+                                </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
