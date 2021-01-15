@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Produit_model extends CI_Model
+class Quantite_model extends CI_Model
 {   
     public $q_surf;
     public $q_res;
@@ -29,7 +29,7 @@ class Produit_model extends CI_Model
 
     public function rechercher($folio)
     {
-        $query = $this->db->get_where($this->table, array($this->folio => $folio));
+        $query = $this->db->get_where($this->table, array('folio' => $folio));
         return $query->row();
     }
 

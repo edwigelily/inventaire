@@ -279,6 +279,7 @@ CREATE TABLE `produit` (
   `libelle_prod` varchar(255) NOT NULL,
   `code_fam` int NOT NULL,
   `prix` int NOT NULL,
+  `h_gamme` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`folio`),
   UNIQUE KEY `id_prod` (`id_prod`),
   KEY `FK_familleProduit` (`code_fam`),
@@ -359,4 +360,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-12 11:10:01
+-- Dump completed on 2021-01-15 11:36:34
