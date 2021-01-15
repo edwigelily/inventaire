@@ -80,6 +80,19 @@ class Produit_model extends CI_Model
          return $this->db->query($sql,$id)-> result();
     }
 
+    public function rechercher_produit_folio($folio)
+    {
+        return $this->db->get_where($this->table, array('folio' => $folio))->row();
+    }
+
+    public function rechercher_produits_similaire_folio($folio)
+    {
+        $this->db->like('folio', $folio);
+        $query = $this->db->get($this->table);
+
+        return $query->result();
+    }
+
     //modifier le prix
     public function modifier_prix($id, $prix)
     {

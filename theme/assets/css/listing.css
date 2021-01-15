@@ -50,7 +50,7 @@ body{
     text-transform: uppercase;
 }
 
-.main-contenair  .second-section-header{
+/* .main-contenair  .second-section-header{
     display: flex;
     justify-content: center;
     margin: 2rem auto 0;
@@ -128,7 +128,7 @@ body{
 :-moz-placeholder{
     color: rgba(255, 255, 255, 0.603);
     font-size: .8rem;
-}
+} */
 
 /* -=================== * bouton hors champ *===================- */
 
@@ -147,6 +147,9 @@ body{
     margin: .4rem;
 }
 
+table tr.bg-blue > td{
+    background-color: rgba(122, 203, 206, 0.685) !important;
+}
 
 table{
 	border: 1px solid black;
