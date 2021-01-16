@@ -74,6 +74,11 @@ class Produit_model extends CI_Model
         return $this->db->query($sql, $id)->result();
     }
 
+    public function lister_hors_gamme()
+    {
+        return $this->db->get_where($this->table, array('h_gamme' => 0))->result();
+    }
+
     public function lister_produit_categorie($id)
     {
         $sql = "SELECT * FROM produit INNER JOIN(SELECT code_fam FROM famille
