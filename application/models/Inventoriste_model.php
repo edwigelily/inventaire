@@ -56,8 +56,8 @@ class Inventoriste_model extends CI_Model
     }
 
     //Supprimer inventoriste
-    public function supprimer_inventoriste($params)
+    public function supprimer_inventoriste($id)
     {
-        return $this->db->delete($this->table, array('id' => $params['id']));
+        return $this->db->delete($this->table, array('id_inv' => $id));
     }
 }

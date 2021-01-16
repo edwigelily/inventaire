@@ -202,6 +202,7 @@ table, td{
  table  .supprimer{
     background-color: #d75e5e;
     color: #fff;
+    cursor: pointer;
  }
 
  
