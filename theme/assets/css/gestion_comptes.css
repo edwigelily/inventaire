@@ -1,0 +1,208 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inconsolata', monospace;
+}
+
+.main-contenair header{
+    background-color: rgb(26, 59, 122,1);
+}
+
+.main-contenair .header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-contenair .header .symbole{
+    color: rgb(26, 59, 122,1);
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: .7rem;
+    padding: 5px 40px;
+}
+
+.main-contenair .header .btn{
+    text-transform: capitalize;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #d75e5e;
+    cursor: pointer;
+}
+.main-contenair .header .btn i{
+    color: #d75e5e;
+    background-color: #fff; 
+    margin-left: 0.8rem; 
+}
+
+.main-contenair .header h2{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.main-contenair  .second-section-header{
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto 0;
+    padding-bottom: 2rem;
+}
+
+
+.main-contenair  .second-section-header ul{
+    list-style: none;
+    display: flex;
+   
+}
+
+.main-contenair  .second-section-header ul li{
+    border-radius: 3px;
+    background: rgba(238,238,238,1);
+    margin: 0.1rem;
+    padding: 7px 30px;
+}
+
+.main-contenair  .second-section-header ul li:nth-of-type(3){
+    padding: 7px 120px;
+}
+
+.main-contenair  .second-section-header ul li a{
+    color: rgba(112,112,112,0.6000000238418579);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .9rem;
+}
+
+.main-contenair  .second-section-header .content_form{
+    border-top: 2px solid #ccc;
+}
+
+.main-contenair  .second-section-header .compte_creer{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.main-contenair  .second-section-header form{
+    width: 100%;
+    
+}
+
+.main-contenair  .second-section-header form h3{
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin: 1rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+.main-contenair  .second-section-header form input{
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    background: rgba(238,238,238,1);
+    color: rgb(26, 59, 122,1);
+    border: none;
+    outline: none;
+    margin: 0 .5rem;
+}
+.main-contenair  .second-section-header form input[type="text"], input[type="email"]{
+    border: 1px solid #fff;
+}
+
+.main-contenair  .second-section-header form select{
+    background: transparent;
+}
+.main-contenair  .second-section-header form .selectionne{
+    background: rgba(238,238,238,1);
+    color: rgb(26, 59, 122,1);
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+}
+
+.main-contenair  .second-section-header form button{
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(93,206,97,1);
+    margin: 0 .5rem;
+}
+
+::-webkit-input-placeholder{
+    color: rgb(26, 59, 122,1);
+}
+
+:-ms-input-placeholder{
+    color: rgb(26, 59, 122,1);
+}
+
+:-moz-placeholder{
+    color: rgb(26, 59, 122,1);
+}
+
+/* -=================== * bouton hors champ *===================- */
+
+.btn-champ{
+    border: 1px solid #fff;
+    border-radius: 3px;
+    line-height: normal;
+    margin-left: .4rem;
+    padding: 5px;
+}
+
+.btn-champ a{
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+    margin: .4rem;
+}
+
+
+table{
+	border: 1px solid black;
+	border-collapse: collapse;
+    margin: 5px auto 10px;
+    width: 100%;
+}
+
+table, td{
+ 	border: 2px solid #fff;
+    padding: 10px;	
+    background: rgba(238,238,238,1);
+    color: rgba(26,59,122,1);
+    text-align: center;
+    text-transform: uppercase;
+    /* width: 100%; */
+ }
+
+ th{
+    padding: 10px;
+    border: 2px solid #fff;
+    text-align: center;	
+    font-weight: 300;
+ }
+
+ .first-head{
+    background: rgba(26,59,122,1);
+    color: #fff;   
+ }
+ table  .supprimer{
+    background-color: #d75e5e;
+    color: #fff;
+ }
+
+ 
+
