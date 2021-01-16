@@ -67,7 +67,7 @@
                                     </tr>
                                     <?php foreach($famille->produits as $produit): ?>
                                         <tr data-key="<?= $produit->code_fam ?>">
-                                            <td class="product"><?= $produit->folio ?></td>
+                                            <td class="product"><?= show_folio($produit->folio) ?></td>
                                             <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
                                             <td><?= $produit->prix ?></td>
                                             <td><?= $produit->q_surf ?></td>

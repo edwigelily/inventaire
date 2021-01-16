@@ -102,7 +102,7 @@ class Admin extends CI_Controller {
         $value = $this->input->get("q");
 
         // On filtre, on verifie si c'est un folio ou pas
-        $pattern = '/^\d+$/';
+        $pattern = '/^[\d ]{2,7}$/';
         preg_match($pattern, $value, $matches);
 
         $data = [];
@@ -132,6 +132,7 @@ class Admin extends CI_Controller {
             ];
 
         } else {
+            $value = (int)str_replace(" ", "", $value);
             // Si c'est un numero
             $produit_exacte = $this->produit_model->rechercher_produit_folio($value);
             $produits_similaires = $this->produit_model->rechercher_produits_similaire_folio($value);
@@ -165,7 +166,7 @@ class Admin extends CI_Controller {
             $data = [
                 'produit' => $produit_exacte,
                 'produits_similaires' => $produits_similaires,
-                'value' => $value
+                'value' => show_folio($value)
             ];
 
         }

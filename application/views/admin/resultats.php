@@ -94,7 +94,7 @@
                         <!-- le produit identique -->
                         <?php if (!empty($produit)) : ?>
                             <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
-                                <td class="product"><?= $produit->folio ?></td>
+                                <td class="product"><?= show_folio($produit->folio) ?></td>
                                 <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
                                 <td><?= number_format($produit->prix, 0, ',', ' ') ?> FCFA</td>
                             </tr>
@@ -105,7 +105,7 @@
                         <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
                             <?php foreach($produits_similaires as $produit): ?>
                                 <tr data-key="<?= $produit->code_fam ?>">
-                                    <td class="product"><?= $produit->folio ?></td>
+                                    <td class="product"><?= show_folio($produit->folio) ?></td>
                                     <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
                                     <td><?= number_format($produit->prix, 0,',', ' ') ?> FCFA</td>
                                 </tr>

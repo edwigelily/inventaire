@@ -101,7 +101,7 @@
                                     </tr>
                                     <?php foreach($famille->produits as $produit): ?>
                                         <tr>
-                                            <td class="product"><?= $produit->folio ?></td>
+                                            <td class="product"><?= show_folio($produit->folio) ?></td>
                                             <td class="product" colspan="2"><?= $produit->libelle_prod ?></td>
                                             <td><?= $produit->prix ?></td>
                                         </tr>
