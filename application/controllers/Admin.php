@@ -245,4 +245,83 @@ class Admin extends CI_Controller {
         $this->load->view('admin/listing', $data);
     }
 
+    public function gestion_compte()
+    {
+        // Authentification
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
+
+        $admin_actuelle = $this->admin_model->par_email($this->session->userdata('email_admin'));
+
+        // Chargement des models
+        $this->load->model('admin_model');
+
+        // Recuperation des inventoristes
+        $inventoristes = $this->inventoriste_model->tous_les_inventoriste();
+        $admins = $this->admin_model->tous_les_admin();
+
+        $data = [
+            "utilisateurs" => array_merge($inventoristes, $admins),
+            "admin" => $admin_actuelle
+        ];
+
+        $this->load->view('admin/gestion_comptes', $data);
+    }
+
+    public function creer_compte()
+    {
+        // Authentification
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
+
+        // Recuperation des donnees
+        $nom_complet = $this->input->post('nom_complet');
+        $email = $this->input->post('email');
+
+        $type = $this->input->post('type');
+
+        // Creation des comptes
+        if ($type === "1") {
+            // Creation inventoriste
+            $inventoriste = [
+                'nom_inv' => $nom_complet,
+                'email_inv' => $email,
+                'mot_passe_inv' => 1234,
+                'id_surc' => 1
+            ];
+
+            if ($this->inventoriste_model->ajouter_inventoriste($inventoriste)) {
+                $this->session->set_flashdata('message-success', "Inventoriste ajoute");
+                redirect('admin/gestion_compte');
+            }
+        }
+
+    }
+
+    public function supprimer_compte()
+    {
+        // Authentification
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        } 
+
+        // Recuperation des donnees
+        $type_compte = $this->input->post('type');
+        $id = $this->input->post('key');
+
+        if ($type_compte === "1") {
+            if ($user = $this->inventoriste_model->supprimer_inventoriste($id)) {
+                $this->session->set_flashdata('message-success', "Compte supprime !!");
+                redirect('admin/gestion_compte');
+            }
+        } else {
+            if ($user = $this->admin_model->supprimer_admin($id)) {
+                $this->session->set_flashdata('message-success', "Admin $user->nom_ad supprime !!");
+                redirect('admin/gestion_compte');
+            }
+        }
+    }
+
 }
