@@ -216,14 +216,15 @@
             document.forms[2].prix.value = `Prix: ${prix} FCFA`;
             document.forms[2].code.value = `Code Famille: ${famille}`;
             if (qSurf !== "0") {
-                document.forms[1].q_surf.value = qSurf;
+                document.forms[2].q_surf.value = qSurf;
             }
 
             if (qRes !== "0") {
-                document.forms[1].q_res.value = qRes;
+                document.forms[2].q_res.value = qRes;
             }
 
-            document.forms[1].action += `${folioCorrect}`;
+            document.forms[2].action += `${folioCorrect}`;
+            console.log(document.forms[2]);
         })
     </script>
 </body>
