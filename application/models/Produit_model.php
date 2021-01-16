@@ -85,6 +85,14 @@ class Produit_model extends CI_Model
     {
         return $this->db->get_where($this->table, array('folio' => $folio))->row();
     }
+    
+    public function rechercher_produits_similaire_libelle($libelle)
+    {
+        $this->db->like('libelle_prod', $libelle);
+        $query = $this->db->get($this->table);
+
+        return $query->result();
+    }
 
     public function rechercher_produits_similaire_folio($folio)
     {

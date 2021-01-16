@@ -213,6 +213,15 @@ table, td{
      left: 5%;
  }
 
+ /* =================== Correctifs ================= */
+.title{
+    font-size: 1.8em;
+}
+
+a.active{
+    background-color: #ffffff;
+    color: rgb(28,62,128) !important;
+}
  /* ---==========================* RESPONSIVE *=========================== */
  @media (min-width: 992px) { 
     body{
