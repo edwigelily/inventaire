@@ -61,8 +61,11 @@
                         <!-- le produit identique -->
                         <?php if (!empty($produit)) : ?>
                             <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
-                                <td class="product"><?= $produit->folio ?></td>
-                                <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                <td class="product"><?= show_folio($produit->folio) ?></td>
+                                <td colspan="2" class="product" colspan="2">
+                                    <?= $produit->libelle_prod ?>
+                                    <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
+                                </td>
                                 <td><?= $produit->prix ?></td>
                                 <td><?= $produit->q_surf ?></td>
                                 <td><?= $produit->q_res ?></td>
@@ -75,8 +78,11 @@
                         <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
                             <?php foreach($produits_similaires as $produit): ?>
                                 <tr data-key="<?= $produit->code_fam ?>">
-                                    <td class="product"><?= $produit->folio ?></td>
-                                    <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                    <td class="product"><?= show_folio($produit->folio) ?></td>
+                                    <td colspan="2" class="product" colspan="2">
+                                        <?= $produit->libelle_prod ?>
+                                        <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
+                                    </td>
                                     <td><?= $produit->prix ?></td>
                                     <td><?= $produit->q_surf ?></td>
                                     <td><?= $produit->q_res ?></td>
@@ -124,6 +130,13 @@
                         <div class="col">
                             <input type="number" name="q_res" class="form-control" placeholder="Quantite en Stock">
                         </div>
+                    </div>
+
+                    <div class="form-check float-left">
+                        <input class="form-check-input" type="radio" name="hors_gamme" value="hors_gamme" id="exampleRadios1">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Mettre ce produit hors gamme 
+                        </label>
                     </div>
 
                 </div>

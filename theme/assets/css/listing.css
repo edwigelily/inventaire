@@ -30,7 +30,7 @@ body{
     padding: 5px 40px;
 }
 
-.main-contenair .header .btn{
+/* .main-contenair .header .btn{
     text-transform: capitalize;
     padding: 5px 10px;
     border: none;
@@ -38,7 +38,7 @@ body{
     color: #fff;
     background-color: #d75e5e;
     cursor: pointer;
-}
+} */
 .main-contenair .header .btn i{
     color: #d75e5e;
     background-color: #fff; 
