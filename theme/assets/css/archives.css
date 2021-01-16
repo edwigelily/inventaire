@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inconsolata', monospace;
+}
+
+.main-contenair header{
+    background-color: rgb(26, 59, 122,1);
+    padding-bottom: 25px;
+}
+
+.main-contenair .header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-contenair .header .symbole{
+    color: rgb(26, 59, 122,1);
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: .7rem;
+    padding: 5px 40px;
+}
+
+.main-contenair .header .menu{
+    background-color: rgb(26, 59, 122,1);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: .9rem;
+    padding: 5px 40px;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+.main-contenair .header .btn{
+    text-transform: capitalize;
+    padding: 7px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #d75e5e;
+    cursor: pointer;
+}
+
+.main-contenair .header h3{
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px;
+    font-weight: 300;
+}
+
+/* ---======================* rechercher en-tête *==========================--- */
+
+.main-contenair  header form h3{
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+
+.main-contenair  header form .recherche{
+    display: flex;
+    justify-content: center;
+}
+
+.main-contenair  header form .btn_recherche{
+    border: 1px solid #fff;
+    border-radius: 2px;
+    padding: 10px 5px;
+    /* width: 12%; */
+    position: relative;
+    margin: 0 .5rem;
+}
+
+
+.main-contenair  header form .btn_recherche  input{
+    background: transparent none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    position: relative;
+}
+.main-contenair  header form  button{
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.main-contenair  header form .date-recherche{
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    border-radius: 3px;
+}
+
+.main-contenair  header form  i{
+    font-size: 1.2rem;
+    color: #fff;
+    position: relative;
+}
+
+.date-recherche::-webkit-input-placeholder{
+    color: rgba(112,112,112,0.6000000238418579);
+    font-size: 1rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    outline: none;
+}
+
+.date-recherche:-ms-input-placeholder{
+    color: rgba(112,112,112,0.6000000238418579);
+    font-size: 1rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    outline: none;
+}
+
+.date-recherche:-moz-input-placeholde{
+    color: rgba(112,112,112,0.6000000238418579);
+    font-size: 1rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    outline: none;
+}
+
+::-webkit-input-placeholder{
+    color: rgba(255, 255, 255, 0.774);
+    font-size: 1rem;
+    border-radius: 3px;
+}
+
+:-ms-input-placeholder{
+    color: rgba(255, 255, 255, 0.603);
+    font-size: .8rem;
+    border-radius: 3px;
+}
+
+:-moz-placeholder{
+    color: rgba(255, 255, 255, 0.603);
+    font-size: .8rem;
+    border-radius: 3px;
+}
+
+
+/* ---======================* corps *==========================--- */
+
+
+
+main .main-contenair .main_body h3{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    background-color: rgb(26, 59, 122,1);
+    margin-top: .2rem;
+    padding: 7px 0;
+}
+
+main .main-contenair .main_body .space_admin{
+    background: rgba(26, 59, 122, 0.7);
+    width: 55%;
+    margin: 5% auto;
+    padding: 25px;
+    font-weight: 300;
+}
+
+main .main-contenair .main_body .space_admin h3{
+    color: #eee;
+    background: transparent;
+}
+
+main .main-contenair .main_body .space_admin .contenair_date h3{
+    background-color: #eee;
+    color: #1A3B7A;
+}
+
+
+main .main-contenair .main_body .space_admin .item_date{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    margin: .8rem 0;
+}
+
+main .main-contenair .main_body .space_admin .item_date .date_debut{
+    width: 100%;
+    margin-right: .2rem;
+}
+
+main .main-contenair .main_body .space_admin .item_date .date_fin{
+    width: 100%;
+    margin-left: .2rem;
+}
+
+main .main-contenair .main_body .space_admin .item_date .titre{
+    color: #fff;
+    margin: 2rem;
+    padding: 10px;
+}
+
+main .main-contenair .main_body .space_admin .item_date .items{
+    background-color: #eee;
+    font-size: .8rem;
+    color: #1A3B7A;
+    padding: 10px 60px;
+    margin: 5px 0;
+}
+
+main .main-contenair .main_body .space_admin .pdf{
+    background-color: rgb(26, 59, 122,1);
+    margin-top: 1.2rem;
+    padding: 10px;
+    color: #fff;
+    position: relative;
+}
+
+main .main-contenair .main_body .space_admin .pdf i{
+    margin-right: .6rem;
+    position: absolute;
+    right: 0;
+}
+
+main .main-contenair .main_body .ligne{
+    height: 2px;
+    width: 70%;
+    background-color: #ccc;
+}
+
+
