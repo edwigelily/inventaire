@@ -168,6 +168,9 @@
             const qRes = parent.querySelector('td:nth-child(5)').textContent;
             const famille = parent.getAttribute('data-key');
 
+            // Ajustement du folio
+            const folioCorrect = parseInt(folio.replace(' ', ''));
+
             // Insertion des elements dans le placeholder
             document.forms[1].folio.value = `Folio: ${folio}`;
             document.forms[1].libelle.value = libelle;
@@ -181,7 +184,7 @@
                 document.forms[1].q_res.value = qRes;
             }
 
-            document.forms[1].action += `${folio}`;
+            document.forms[1].action += `${folioCorrect}`;
         })
     </script>
 </body>
