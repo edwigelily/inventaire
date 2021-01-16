@@ -104,8 +104,8 @@
                             <th>folio</th>
                             <th colspan="2">libellé</th>
                             <th>Prix de vente</th>
-                            <th>quantité en rayon</th>
-                            <th>quantité en stock</th>
+                            <th>quantité en reserve</th>
+                            <th>quantité en magasin</th>
                             <th>total</th>
                         </tr>
                     </thead>
@@ -122,8 +122,8 @@
                                             <td class="product"><?= show_folio($produit->folio) ?></td>
                                             <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
                                             <td><?= $produit->prix ?></td>
-                                            <td><?= $produit->q_surf ?></td>
                                             <td><?= $produit->q_res ?></td>
+                                            <td><?= $produit->q_surf ?></td>
                                             <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -165,10 +165,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <input type="number" name="q_surf" class="form-control" placeholder="Quantite en Surface">
+                            <input type="number" name="q_res" class="form-control" placeholder="Quantite en reserve">
                         </div>
                         <div class="col">
-                            <input type="number" name="q_res" class="form-control" placeholder="Quantite en Stock">
+                            <input type="number" name="q_surf" class="form-control" placeholder="Quantite en magasin">
                         </div>
                     </div>
 
