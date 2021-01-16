@@ -37,7 +37,7 @@ class Famille_model extends CI_Model
         $this->db->limit($limit, $debut);
         $this->db->join('activite', 'activite.code_act=famille.code_act');
 
-        return $this->db->get($this->table, $limit, $debut)-> result();
+        return $this->db->get_where($this->table, array('famille.code_act' => $id_cat) ,$limit, $debut)-> result();
     }
     
     public function nombre_famille_categorie($id_cat)

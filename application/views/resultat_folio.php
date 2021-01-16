@@ -19,20 +19,13 @@
             <header>
                 <div class="header">
                     <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
-                    <h2><?= $nom_categorie ?></h2>
-                    <div class="btn-group-vertical " role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger rounded-0">
-                            Déconnexion<i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" data-toggle="modal" data-target="#ModalHorsGamme" class="btn btn-success mt-1 rounded-0">
-                            Ajouter un hors Gamme
-                        </button>
-                    </div>
+                    <h2>Resultats</h2>
+                    <span class="btn">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></span>
                 </div>
                 <div class="container my-4 py-3">
                     <form class="form-inline row" action="<?= site_url('inventoriste/recherche_produit') ?>">
                         <div class="col-lg-8">
-                            <input class="form-control w-100" name="q" type="search" placeholder="Entrer le libelle ou le folio d'un produit" aria-label="Search">
+                            <input class="form-control w-100" value="<?= isset($value) ? $value : '' ?>" name="q" type="search" placeholder="Entrer le libelle ou le folio d'un produit" aria-label="Search">
                         </div>
                         <button class="btn btn-primary my-2 my-sm-0" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>
@@ -40,55 +33,10 @@
                     </form>
                 </div>
             </header>
-            <!-- ================= * MODAL PRODUIT HORS GAMME ==================== -->
-            <div class="modal fade" id="ModalHorsGamme" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div class="modal-dialog">
-                    <form class="modal-content" action="<?= site_url('inventoriste/ajouter_hors_gamme') ?>" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel2">Ajouter un produit hors gamme</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <input type="text" name="code" class="form-control" placeholder="Code Famille">
-                                </div>
-                                <div class="col">
-                                    <input type="text" name="prix" class="form-control" placeholder="Prix de Vente">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <input type="text" name="folio"  class="form-control" placeholder="Folio">
-                                </div>
-                                <div class="col">
-                                    <input type="text" name="libelle" class="form-control" placeholder="Libelle du produit">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <input type="number" name="q_surf" class="form-control" placeholder="Quantite en Surface">
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="q_res" class="form-control" placeholder="Quantite en Stock">
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-success">Ajouter</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <!-- ============================* liste *========================= -->
             <div class="table">
                 <!-- ================== Pagination ================= -->
-                <?= $liens ?>
+                <!-- <?= $liens ?> -->
 
                 <?php if ($this->session->flashdata('message-success')) :?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -110,24 +58,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($familles)): 
-                            foreach($familles as $famille) :?>
-                                <?php if (!empty($famille->produits)) : ?>
-                                    <tr class="first-head">
-                                        <th colspan="2">code famille: <?= $famille->nom ?></th>
-                                        <th colspan="8"> nom de la famille: <?= $famille->code_fam ?></th>
-                                    </tr>
-                                    <?php foreach($famille->produits as $produit): ?>
-                                        <tr data-key="<?= $produit->code_fam ?>">
-                                            <td class="product"><?= show_folio($produit->folio) ?></td>
-                                            <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
-                                            <td><?= $produit->prix ?></td>
-                                            <td><?= $produit->q_surf ?></td>
-                                            <td><?= $produit->q_res ?></td>
-                                            <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                        <!-- le produit identique -->
+                        <?php if (!empty($produit)) : ?>
+                            <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
+                                <td class="product"><?= show_folio($produit->folio) ?></td>
+                                <td colspan="2" class="product" colspan="2">
+                                    <?= $produit->libelle_prod ?>
+                                    <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
+                                </td>
+                                <td><?= $produit->prix ?></td>
+                                <td><?= $produit->q_surf ?></td>
+                                <td><?= $produit->q_res ?></td>
+                                <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
+                            </tr>
+                        <?php endif; ?>
+
+                        <!-- fin -->
+
+                        <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
+                            <?php foreach($produits_similaires as $produit): ?>
+                                <tr data-key="<?= $produit->code_fam ?>">
+                                    <td class="product"><?= show_folio($produit->folio) ?></td>
+                                    <td colspan="2" class="product" colspan="2">
+                                        <?= $produit->libelle_prod ?>
+                                        <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
+                                    </td>
+                                    <td><?= $produit->prix ?></td>
+                                    <td><?= $produit->q_surf ?></td>
+                                    <td><?= $produit->q_res ?></td>
+                                    <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
+                                </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
@@ -178,6 +138,7 @@
                             Mettre ce produit hors gamme 
                         </label>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
@@ -207,14 +168,11 @@
             const qRes = parent.querySelector('td:nth-child(5)').textContent;
             const famille = parent.getAttribute('data-key');
 
-            // Ajustement du folio
-            const folioCorrect = parseInt(folio.replace(' ', ''));
-
             // Insertion des elements dans le placeholder
-            document.forms[2].folio.value = `Folio: ${folio}`;
-            document.forms[2].libelle.value = libelle;
-            document.forms[2].prix.value = `Prix: ${prix} FCFA`;
-            document.forms[2].code.value = `Code Famille: ${famille}`;
+            document.forms[1].folio.value = `Folio: ${folio}`;
+            document.forms[1].libelle.value = libelle;
+            document.forms[1].prix.value = `Prix: ${prix} FCFA`;
+            document.forms[1].code.value = `Code Famille: ${famille}`;
             if (qSurf !== "0") {
                 document.forms[1].q_surf.value = qSurf;
             }
@@ -223,7 +181,7 @@
                 document.forms[1].q_res.value = qRes;
             }
 
-            document.forms[1].action += `${folioCorrect}`;
+            document.forms[1].action += `${folio}`;
         })
     </script>
 </body>

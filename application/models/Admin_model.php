@@ -42,10 +42,17 @@ class Admin_model extends CI_Model
         return $query->row();
     }
 
-    //Supprimer admin
-    public function supprimer_admin($params)
+    //Recupérer un Admin en fonction de son adresse e-mail
+    public function par_email($email)
     {
-        return $this->db->delete($this->table, array('id' => $params['id']));
+        $query = $this->db->get_where($this->table, array('email_ad' => $email));
+        return $query->row();
+    }
+
+    //Supprimer admin
+    public function supprimer_admin($id)
+    {
+        return $this->db->delete($this->table, array('id_ad' => $id));
     }
 
 }

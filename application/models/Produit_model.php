@@ -7,6 +7,7 @@ class Produit_model extends CI_Model
     public $libelle_prod;
     public $prix;
     public $code_fam;
+    public $h_gamme;
 
 
     // Nom de la table
@@ -73,11 +74,37 @@ class Produit_model extends CI_Model
         return $this->db->query($sql, $id)->result();
     }
 
+    public function lister_hors_gamme()
+    {
+        return $this->db->get_where($this->table, array('h_gamme' => 0))->result();
+    }
+
     public function lister_produit_categorie($id)
     {
         $sql = "SELECT * FROM produit INNER JOIN(SELECT code_fam FROM famille
-                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?";
-        return $this->db->query($sql, $id)->result();
+                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?)AS alpha";
+         return $this->db->query($sql,$id)-> result();
+    }
+
+    public function rechercher_produit_folio($folio)
+    {
+        return $this->db->get_where($this->table, array('folio' => $folio))->row();
+    }
+    
+    public function rechercher_produits_similaire_libelle($libelle)
+    {
+        $this->db->like('libelle_prod', $libelle);
+        $query = $this->db->get($this->table);
+
+        return $query->result();
+    }
+
+    public function rechercher_produits_similaire_folio($folio)
+    {
+        $this->db->like('folio', $folio);
+        $query = $this->db->get($this->table);
+
+        return $query->result();
     }
 
     //modifier le prix
@@ -98,9 +125,9 @@ class Produit_model extends CI_Model
         return $this->db->delete($this->table, array($this->id => $id));
     }
 
-    //modifier le prix
-    public function mettre_produit_hors_gamme($id)
-    {
-        return $this->db->update($this->table, array('code_fam' => 0), array($this->id => $id));
-    }
+     //modifier le prix
+     public function mettre_produit_hors_gamme($id)
+     {
+         return $this->db->update($this->table, array('h_gamme' => 0), array($this->id => $id));
+     }
 }

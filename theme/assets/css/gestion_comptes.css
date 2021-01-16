@@ -30,7 +30,7 @@ body{
     padding: 5px 40px;
 }
 
-/* .main-contenair .header .btn{
+.main-contenair .header .btn{
     text-transform: capitalize;
     padding: 5px 10px;
     border: none;
@@ -38,7 +38,7 @@ body{
     color: #fff;
     background-color: #d75e5e;
     cursor: pointer;
-} */
+}
 .main-contenair .header .btn i{
     color: #d75e5e;
     background-color: #fff; 
@@ -82,77 +82,75 @@ body{
     font-size: .9rem;
 }
 
+.main-contenair  .second-section-header .content_form{
+    border-top: 2px solid #ccc;
+}
+
+.main-contenair  .second-section-header .compte_creer{
+    display: flex;
+    justify-content: center;
+   
+}
+
 .main-contenair  .second-section-header form{
-    border: 1px solid #fff;
-    border-radius: 3px;
-    padding: 0 5px;
-    width: 12%;
-    position: relative;
+    width: 100%;
+    
+}
+
+.main-contenair  .second-section-header form h3{
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin: 1rem;
+    color: #fff;
+    font-weight: 300;
 }
 
 .main-contenair  .second-section-header form input{
-    background: transparent none;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    background: rgba(238,238,238,1);
+    color: rgb(26, 59, 122,1);
     border: none;
     outline: none;
-    width: 90%;
-    position: relative;
-    top: 8px;
+    margin: 0 .5rem;
+}
+.main-contenair  .second-section-header form input[type="text"], input[type="email"]{
+    border: 1px solid #fff;
+}
+
+.main-contenair  .second-section-header form select{
+    background: transparent;
+}
+.main-contenair  .second-section-header form .selectionne{
+    background: rgba(238,238,238,1);
+    color: rgb(26, 59, 122,1);
+    text-transform: uppercase;
+    border: none;
+    outline: none;
 }
 
 .main-contenair  .second-section-header form button{
-    background: transparent none;
     border: none;
     outline: none;
-    line-height: normal;
-    font-size: 1.5rem;
-    color: #fff;
-    position: absolute;
-    right: 10px;
-    top: 5px;
-}
-.main-contenair  .second-section-header form button i{
+    text-transform: uppercase;
     font-size: 1rem;
-    position: relative;
-    top: -5px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(93,206,97,1);
+    margin: 0 .5rem;
 }
+
 ::-webkit-input-placeholder{
-    color: rgba(255, 255, 255, 0.774);
-    font-size: .8rem;
+    color: rgb(26, 59, 122,1);
 }
 
 :-ms-input-placeholder{
-    color: rgba(255, 255, 255, 0.603);
-    font-size: .8rem;
+    color: rgb(26, 59, 122,1);
 }
 
 :-moz-placeholder{
-    color: rgba(255, 255, 255, 0.603);
-    font-size: .8rem;
-}
-
-/* ==================== menu ================= */
-
-.banner-footer{
-    display: flex;
-    margin-bottom: 0;
-}
-
-.banner-footer .banner-link{
-    margin-bottom: 0;
-    flex: 1;
-    border: 1px solid #ffffff;
-    text-align: center;
-    padding: .5em 0;
-    text-decoration: none;
-    color: #ffffff;
-}
-
-/* ===================== * Pagination * ============ */
-.pagination{
-    position: fixed;
-    bottom: 8px;
-    right: 3px;
-    opacity: .6;
+    color: rgb(26, 59, 122,1);
 }
 
 /* -=================== * bouton hors champ *===================- */
@@ -176,8 +174,7 @@ body{
 table{
 	border: 1px solid black;
 	border-collapse: collapse;
-    /* margin: 5px auto 10px; */
-    margin-top: 0;
+    margin: 5px auto 10px;
     width: 100%;
 }
 
@@ -195,37 +192,18 @@ table, td{
     padding: 10px;
     border: 2px solid #fff;
     text-align: center;	
+    font-weight: 300;
  }
-.first-head{
+
+ .first-head{
     background: rgba(26,59,122,1);
     color: #fff;   
-    margin-bottom: 1em;
+ }
+ table  .supprimer{
+    background-color: #d75e5e;
+    color: #fff;
+    cursor: pointer;
  }
 
- .product{
-     cursor: pointer;
- }
-
- .alert{
-     position: absolute;
-     bottom: 10px;
-     width: 40%;
-     left: 5%;
- }
-
- /* =================== Correctifs ================= */
-.title{
-    font-size: 1.8em;
-}
-
-a.active{
-    background-color: #ffffff;
-    color: rgb(28,62,128) !important;
-}
- /* ---==========================* RESPONSIVE *=========================== */
- @media (min-width: 992px) { 
-    body{
-        margin: 0;
-    }
- }
+ 
 

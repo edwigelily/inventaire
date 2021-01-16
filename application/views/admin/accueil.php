@@ -26,7 +26,7 @@
                 <div class="choix">
                     <ul>
                         <li> <a href="<?= site_url('admin/listing_gamme') ?>">Administrer une gamme</a> </li>
-                        <li><a href="">Gestionnaire de compte</a></li>
+                        <li><a href="<?= site_url('admin/gestion_compte') ?>">Gestionnaire de compte</a></li>
                         <li><a href="<?= site_url('admin/inventaire') ?>">Lancer un inventaire</a></li>
                         <li><a href="">archives</a></li>
                     </ul>

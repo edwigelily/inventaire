@@ -72,8 +72,6 @@
                     </form>
                 </div>
             </div>
-            <!-- ================== Pagination ================= -->
-            <?= $liens ?>
             <!-- ============================* liste *========================= -->
             <div class="table">
                 <?php if ($this->session->flashdata('message-success')) :?>
@@ -93,25 +91,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($familles)): 
-                            foreach($familles as $famille) :?>
-                                <?php if (!empty($famille->produits)) : ?>
-                                    <tr class="first-head">
-                                        <th colspan="4" ><?= $famille->nom ?> - <?= $famille->code_fam ?></th>
-                                    </tr>
-                                    <?php foreach($famille->produits as $produit): ?>
-                                        <tr>
-                                            <td class="product"><?= show_folio($produit->folio) ?></td>
-                                            <td class="product" colspan="2"><?= $produit->libelle_prod ?></td>
-                                            <td><?= $produit->prix ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <tr class="title">
-                                <td colspan="8">Aucune Famille Enregistre pour le moment</td>
+                        <!-- le produit identique -->
+                        <?php if (!empty($produit)) : ?>
+                            <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
+                                <td class="product"><?= show_folio($produit->folio) ?></td>
+                                <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                <td><?= number_format($produit->prix, 0, ',', ' ') ?> FCFA</td>
                             </tr>
+                        <?php endif; ?>
+
+                        <!-- fin -->
+
+                        <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
+                            <?php foreach($produits_similaires as $produit): ?>
+                                <tr data-key="<?= $produit->code_fam ?>">
+                                    <td class="product"><?= show_folio($produit->folio) ?></td>
+                                    <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?></td>
+                                    <td><?= number_format($produit->prix, 0,',', ' ') ?> FCFA</td>
+                                </tr>
+                            <?php endforeach; ?>
                         <?php endif; ?>
                     </tbody>
                 </table>
