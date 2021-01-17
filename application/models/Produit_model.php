@@ -86,6 +86,13 @@ class Produit_model extends CI_Model
          return $this->db->query($sql,$id)-> result();
     }
 
+    public function lister_produit_categorie_hg($id_cat)
+    {
+        $sql = "SELECT * FROM produit INNER JOIN(SELECT code_fam FROM famille
+                INNER JOIN activite ON famille.code_act = activite.code_act WHERE id_cat = ?)AS alpha WHERE h_gamme = 0";
+         return $this->db->query($sql,$id_cat)-> result();
+    }
+
     public function rechercher_produit_folio($folio)
     {
         return $this->db->get_where($this->table, array('folio' => $folio))->row();

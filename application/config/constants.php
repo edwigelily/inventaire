@@ -85,7 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // Configuration de l'environnement
-defined('DEV_URL') OR define('DEV_URL', "http://localhost/inventaire"); // L'url lorsque nous sommes en local
+defined('DEV_URL') OR define('DEV_URL', "http://localhost:3000"); // L'url lorsque nous sommes en local
 defined('PROD_URL') OR define('PROD_URL', "http://dynamo74.alwaysdata.net/"); // L'url lorsque nous sommes en ligne
 
 
