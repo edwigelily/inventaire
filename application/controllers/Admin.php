@@ -276,8 +276,17 @@ class Admin extends CI_Controller {
 
 
         foreach($familles as $famille){
+
             // On recupere les produits d'une famille
             $famille->produits = $this->produit_model->lister_produit_qte_famille($famille->code_fam);
+
+            // On recupere le montant total
+
+            $prix_produits = array_map(function($prod){
+                return ($prod->q_surf + $prod->q_res) * $prod->prix;
+            }, $famille->produits);
+
+            $famille->montant = array_sum($prix_produits);
         }
 
 

@@ -100,6 +100,10 @@
                                             <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
                                         </tr>
                                     <?php endforeach; ?>
+                                    <tr>
+                                        <td colspan="8">MONTANT TOTAL:</td>
+                                        <td colspan="2" class="font-weight-bold"><?= number_format($famille->montant, 0, ',', ' ') ?> FCFA</td>
+                                    </tr>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         <?php endif; ?>
