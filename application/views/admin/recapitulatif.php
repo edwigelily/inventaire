@@ -94,7 +94,7 @@
 
                     <table class="table_data">
                         <div class="nom_activite">
-                            <h3>ACTIVITÉ <?= $activite->code_act ?> "<?= $activite->nom_act ?>"</h3>
+                            <h3>ACTIVITÉ - <?= $activite->code_act ?> "<?= ucfirst(strtolower($activite->nom_act)) ?>"</h3>
                         </div>
                         <thead>
                             <tr>
@@ -114,7 +114,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">TOTAL PAR ACTIVITÉ: <?= $activite->total_montant ?></td>
+                                <td colspan="3">TOTAL PAR ACTIVITÉ: <span class="montant-total"><?= number_format($activite->total_montant, 0, ',', ' ') ?> FCFA</span></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -122,7 +122,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
 
-			<table class="table_totaux">
+			<!-- <table class="table_totaux">
 				<thead>
 					<tr>
 						<th>TOTAUX INVENTAIRES</th>
@@ -149,6 +149,19 @@
 						<td></td>
 					</tr>
 				</tfoot>
+			</table> -->
+
+			<table class="table_totaux">
+				<thead>
+					<tr>
+						<th>MONTANT TOTAL</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="montant-total"><?= number_format($montant_total, 0, ',',' ') ?> FCFA</td>
+					</tr>
+				</tbody>
 			</table>
 		</main>
 		<footer></footer>

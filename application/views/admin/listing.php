@@ -29,26 +29,14 @@
                         </button>
                     </div>
                 </div>
-                <div class="second-section-header">
-                    <ul>
-                        <li> <a href="#">code famille</a> </li>
-                        <li><a href="">folio</a></li>
-                        <li><a href="">libellé</a></li>
-                        <li><a href="">quantité en stock</a></li>
-                    </ul>
-                    <form>
-                        <div class="recheche">
-                            <input type="search" name="" id="recherche" placeholder="RECHERCHE">
-                            <button type="submit"> <i class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                    </form>
-                    <span class="btn-champ"><a href="">Hors Champ</a></span>
+                <div class="container my-4 py-3">
+                   <?php $this->load->view('barre_recherche'); ?>
                 </div>
                 <div class="banner-footer">
-                    <a class="banner-link" href="#">Epicerie</a>
-                    <a class="banner-link" href="#">Bazar</a>
-                    <a class="banner-link" href="#">Liquides</a>
-                    <a class="banner-link" href="#">Vivre Frais</a>
+                    <a class="banner-link" href="<?= site_url('admin/inventaire/1') ?>">Epicerie</a>
+                    <a class="banner-link" href="<?= site_url('admin/inventaire/4') ?>">Bazar</a>
+                    <a class="banner-link" href="<?= site_url('admin/inventaire/2') ?>">Liquides</a>
+                    <a class="banner-link" href="<?= site_url('admin/inventaire/3') ?>">Vivre Frais</a>
                     <a class="banner-link" href="#">Hors Gamme</a>
                 </div>
             </header>
@@ -82,8 +70,8 @@
                             <th colspan="2">folio</th>
                             <th colspan="4">libellé</th>
                             <th>Prix de vente</th>
-                            <th>quantité en rayon</th>
-                            <th>quantité en stock</th>
+                            <th>quantité en reserve</th>
+                            <th>quantité en magasin</th>
                             <th>total</th>
                         </tr>
 
@@ -102,8 +90,8 @@
                                             <td colspan="2"><?= show_folio($produit->folio) ?></td>
                                             <td colspan="4"><?= $produit->libelle_prod ?></td>
                                             <td><?= $produit->prix ?></td>
-                                            <td><?= $produit->q_surf ?></td>
                                             <td><?= $produit->q_res ?></td>
+                                            <td><?= $produit->q_surf ?></td>
                                             <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
                                         </tr>
                                     <?php endforeach; ?>

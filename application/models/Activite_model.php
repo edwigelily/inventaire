@@ -30,4 +30,9 @@ class Activite_model extends CI_Model
         return $this->db->insert($this->table, $params);
     }
 
+    public function rechercher($code)
+    {
+        return $this->db->get_where($this->table, array('code_act' => $code))->row();
+    }
+
 }
