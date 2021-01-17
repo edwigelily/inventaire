@@ -82,7 +82,7 @@ class Liquide extends CI_Controller {
 
     public function creation_produits(){
         // Lecture des donnees - Famille epicerie
-        $range = "Produit!F5:I496";
+        $range = "Produit!F517:I878";
 
         $response = $this->service->spreadsheets_values->get($this->spreadsheetId, $range);
         $values = $response->getValues();
