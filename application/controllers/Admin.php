@@ -56,6 +56,44 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function fiche_recapitulatif()
+    {
+        if (!$this->est_connecte()) {
+            redirect('admin/connexion');
+        }
+
+        // Chargement du modele
+        // $this->load->model('activite_model');
+
+        $activites = $this->activite_model->toutes_les_activite();
+
+        foreach ($activites as $activite)
+        {
+            $total_montant = 0;
+            $activite->familles = $this->famille_model->famille_activite($activite->code_act);
+            // Ajout des produits par quantite
+            foreach($activite->familles as $famille)
+            {
+                $produits = $this->produit_model->lister_produit_qte_famille($famille->code_fam);
+
+                $produits = array_map(function ($produit){
+                    return ($produit->q_surf + $produit->q_res) * $produit->prix;
+                }, $produits);
+
+                $famille->montant = array_sum($produits);
+                $total_montant += $famille->montant;
+            }
+
+            $activite->total_montant = $total_montant;
+        }
+
+        $data = [
+            "activites" => $activites
+        ];
+
+        $this->load->view('admin/recapitulatif', $data);
+    }
+
     public function listing_gamme($id_cat=1)
     {
         if (!$this->est_connecte()) {

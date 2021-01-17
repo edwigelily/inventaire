@@ -32,6 +32,14 @@ class Famille_model extends CI_Model
         return $this->db->query($sql, $id_cat)-> result();
     }
 
+    public function famille_activite($code_act)
+    {
+        $sql = "SELECT * FROM famille
+        INNER JOIN activite ON famille.code_act = activite.code_act WHERE activite.code_act = ?";
+
+        return $this->db->query($sql, $code_act)-> result();
+    }
+
     public function famille_categorie_intervalle($id_cat, $limit, $debut)
     {
         $this->db->limit($limit, $debut);
@@ -52,6 +60,11 @@ class Famille_model extends CI_Model
     {
 
         return $this->db->insert($this->table, $params);
+    }
+
+    public function rechercher($code_fam)
+    {
+        return $this->db->get_where($this->table, array('code_fam' => $code_fam))->row();
     }
 
 }
