@@ -320,7 +320,25 @@ class Admin extends CI_Controller {
             "familles" => $familles,
         ];
 
-        $this->load->view('admin/fiche_de_gamme', $data);
+        $html = $this->load->view('admin/fiche_de_gamme', $data);
+        // create the API client instance
+        $client = new \Pdfcrowd\HtmlToPdfClient("dynamo63", "6fff217b12496240253ac63d409c0a0f");
+    
+        // run the conversion and write the result to a file
+        $pdf = $client->convertString($html->output->get_output());
+
+        $nom_gamme = "Inventaire_G043_" . date("Y-m-d H:i:s");
+    
+        header("Content-Type: application/pdf");
+        header("Cache-Control: no-cache");
+        header("Accept-Ranges: none");
+        header("Content-Disposition: inline; filename=\"$nom_gamme" . ".pdf\"");
+    
+        echo $pdf;
+    }
+
+    public function export_fiche()
+    {
     }
 
     public function gestion_compte()
