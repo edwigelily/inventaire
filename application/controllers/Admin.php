@@ -297,6 +297,32 @@ class Admin extends CI_Controller {
         $this->load->view('admin/listing', $data);
     }
 
+    public function fiche_de_gamme()
+    {
+        // Creation du fichier html
+        $familles = $this->famille_model->toutes_les_familles();
+
+        foreach($familles as $famille){
+
+            // On recupere les produits d'une famille
+            $famille->produits = $this->produit_model->lister_produit_qte_famille($famille->code_fam);
+
+            // On recupere le montant total
+
+            $prix_produits = array_map(function($prod){
+                return ($prod->q_surf + $prod->q_res) * $prod->prix;
+            }, $famille->produits);
+
+            $famille->montant = array_sum($prix_produits);
+        }
+
+        $data = [
+            "familles" => $familles,
+        ];
+
+        $this->load->view('admin/fiche_de_gamme', $data);
+    }
+
     public function gestion_compte()
     {
         // Authentification

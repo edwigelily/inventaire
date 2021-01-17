@@ -9,60 +9,60 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= theme_url() ?>assets/css/listing_admin.css">
-    <title>Liste des produits ~ Dashboard Admin</title>
+    <link rel="stylesheet" href="<?= theme_url() ?>assets/css/fiche_gamme.css">
+    <title>INVENTAIRE G043</title>
     <script>
-        setInterval(() => {
-            location.reload()
-        }, 5 * 60 * 1000);
+        // window.print();
     </script>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" onclick="window.print(); return false">Telecharger le PDF <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            Cette Page montre l'ensemble de la Gamme 
+        </span>
+    </div>
+    </nav>
+    <header>
+			<div id="main_container">
+				<div class="container">
+					<div class="logoceca"><img src="<?= theme_url() ?>assets/img/logo.png"></div>
+					<div class="boxleft">
+						<p>CECA GADIS</p>
+						<p>LIBREVILLE</p>
+						<p>GABOPRIX</p>
+					</div>
+				</div>
+				<div class="container">
+					<div class="box">
+						<P><strong>Récapitulatif d'inventaire</strong></P>
+						<P><strong>G043 - CACADO ADL - AEROPORT</strong></P>
+					</div>
+					<div class="box">
+						<P>Nom du gérant</P>
+						<P>KOLEVI COLLEY GAVA</P>
+					</div class="box">
+					<div class="box">
+						<P>Date d'édition</P>
+						<P>14/01/2021</P>
+					</div>
+				</div>
+			</div>
+		</header>
     <main>
         <div class="main-contenair">
-            <header>
-                <div class="header">
-                <a href="<?= site_url('admin') ?>" class="symbole">Retour au menu <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
-                    <h2>ADMINISTRATEUR</h2>
-                    <div class="btn-group-vertical " role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger rounded-0">
-                            Déconnexion<i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
-                        <button type="button" data-toggle="modal" data-target="#ModalFiche" class="btn btn-success mt-1 rounded-0">
-                            Generer le recapitulatif
-                        </button>
-                    </div>
-                </div>
-                <div class="container my-4 py-3">
-                   <?php $this->load->view('barre_recherche'); ?>
-                </div>
-                <div class="banner-footer">
-                    <a class="banner-link" href="<?= site_url('admin/inventaire/1') ?>">Epicerie</a>
-                    <a class="banner-link" href="<?= site_url('admin/inventaire/4') ?>">Bazar</a>
-                    <a class="banner-link" href="<?= site_url('admin/inventaire/2') ?>">Liquides</a>
-                    <a class="banner-link" href="<?= site_url('admin/inventaire/3') ?>">Vivre Frais</a>
-                    <a class="banner-link" href="#">Hors Gamme</a>
-                </div>
-            </header>
-            <!-- =========================* modal ajouter un produit ===================== -->
-            <!-- Modal -->
-            <div class="modal fade" id="ModalFiche" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel2">Recapitulatif</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <a href="<?= site_url('admin/fiche_recapitulatif') ?>" class="btn btn-success btn-lg btn-block">Generer la fiche recap</a>
-                            <a href="<?= site_url('admin/fiche_de_gamme') ?>" class="btn btn-secondary btn-lg btn-block">Generer la fiche de Gamme</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- ============================* liste *========================= -->
             <div class="table">
                 <table>
@@ -75,6 +75,8 @@
                             <th>quantité en magasin</th>
                             <th>total</th>
                         </tr>
+
+                        
                     </thead>
                     <tbody>
                         <?php if (!empty($familles)): 
