@@ -126,7 +126,7 @@ class Inventoriste extends CI_Controller
             redirect('inventoriste/connexion_inventoriste');
         }
 
-        $produits = $this->produit_model->lister_hors_gamme();
+        $produits = $this->produit_model->lister_produit_categorie_hg($id_cat);
 
         var_dump($produits);
     }
@@ -265,14 +265,23 @@ class Inventoriste extends CI_Controller
 
         $data = [];
 
+        // Filtre
+        $familles = array_map(function ($fam){
+            return $fam->code_fam;
+        }, $this->famille_model->famille_categorie($inventoriste->id_cat));
+
         if (empty($matches)) {
             // Si c'est un libelle
             $produits_similaires = $this->produit_model->rechercher_produits_similaire_libelle($value);
 
+
             // Etape 3 : On trouve les quantites de ces produits sinon on attribue 0 partout
             if (!empty($produits_similaires)) {
-                foreach($produits_similaires as $produit)
+                foreach($produits_similaires as $key => $produit)
                 {
+                    if (!in_array($produit->code_fam, $familles)) {
+                        unset($produits_similaires[$key]);
+                    }
                     if($quantite = $this->quantite_model->rechercher($produit->folio))
                     {
                         $produit->q_surf = $quantite->q_surf;
@@ -308,8 +317,13 @@ class Inventoriste extends CI_Controller
             }
 
             if (!empty($produits_similaires)) {
-                foreach($produits_similaires as $produit)
+                
+                foreach($produits_similaires as $key => $produit)
                 {
+                    if (!in_array($produit->code_fam, $familles)) {
+                        unset($produits_similaires[$key]);
+                    }
+
                     if($quantite = $this->quantite_model->rechercher($produit->folio))
                     {
                         $produit->q_surf = $quantite->q_surf;
