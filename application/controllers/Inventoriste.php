@@ -313,6 +313,9 @@ class Inventoriste extends CI_Controller
                     $produit_exacte->q_surf = 0;
                     $produit_exacte->q_res = 0;
                 }
+                if (!in_array($produit_exacte->code_fam, $familles)) {
+                    $produit_exacte = null;
+                }
     
             }
 

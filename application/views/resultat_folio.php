@@ -20,7 +20,7 @@
                 <div class="header">
                     <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
                     <h2>Resultats</h2>
-                    <span class="btn">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></span>
+                    <a href="<?= site_url('inventoriste/deconnexion') ?>" class="btn btn-danger">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></a>
                 </div>
                 <div class="container my-4 py-3">
                     <form class="form-inline row" action="<?= site_url('inventoriste/recherche_produit') ?>">
