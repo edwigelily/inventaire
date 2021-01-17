@@ -20,7 +20,7 @@
                 <div class="header">
                     <div class="symbole">inventaire <br> <span style="margin-left: 1.5rem;">G043</span></div>
                     <h2>Resultats</h2>
-                    <span class="btn">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></span>
+                    <a href="<?= site_url('inventoriste/deconnexion') ?>" class="btn btn-danger">déconnexion <i class="fa fa-trash" aria-hidden="true"></i></a>
                 </div>
                 <div class="container my-4 py-3">
                     <form class="form-inline row" action="<?= site_url('inventoriste/recherche_produit') ?>">
@@ -49,6 +49,7 @@
                 <table>
                     <thead>
                         <tr class="first-head">
+                            <th>Code Famille</th>
                             <th>folio</th>
                             <th colspan="2">libellé</th>
                             <th>Prix de vente</th>
@@ -61,14 +62,15 @@
                         <!-- le produit identique -->
                         <?php if (!empty($produit)) : ?>
                             <tr class="bg-blue" data-key="<?= $produit->code_fam ?>">
+                                <td><?= $produit->code_fam ?></td>
                                 <td class="product"><?= show_folio($produit->folio) ?></td>
                                 <td colspan="2" class="product" colspan="2">
                                     <?= $produit->libelle_prod ?>
                                     <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
                                 </td>
                                 <td><?= $produit->prix ?></td>
-                                <td><?= $produit->q_surf ?></td>
                                 <td><?= $produit->q_res ?></td>
+                                <td><?= $produit->q_surf ?></td>
                                 <td><?= number_format(($produit->q_surf + $produit->q_res) * $produit->prix, 0, ',', ' ') ?> FCFA</td>
                             </tr>
                         <?php endif; ?>
@@ -78,11 +80,9 @@
                         <?php if (!empty($produits_similaires) && count($produits_similaires) > 1): ?>
                             <?php foreach($produits_similaires as $produit): ?>
                                 <tr data-key="<?= $produit->code_fam ?>">
+                                    <td><?= $produit->code_fam ?></td>
                                     <td class="product"><?= show_folio($produit->folio) ?></td>
-                                    <td colspan="2" class="product" colspan="2">
-                                        <?= $produit->libelle_prod ?>
-                                        <?= $produit->h_gamme == "1" ? '' : '(H-G)' ?>
-                                    </td>
+                                    <td colspan="2" class="product" colspan="2"><?= $produit->libelle_prod ?><?= $produit->h_gamme == "1" ? '' : '(H-G)' ?></td>
                                     <td><?= $produit->prix ?></td>
                                     <td><?= $produit->q_res ?></td>
                                     <td><?= $produit->q_surf ?></td>
@@ -161,15 +161,16 @@
             const parent = e.target.parentElement;
 
             // Recuperation des informations de la ligne
-            const folio = parent.querySelector('td:first-child').textContent;
-            const libelle = parent.querySelector('td:nth-child(2)').textContent;
-            const prix = parent.querySelector('td:nth-child(3)').textContent;
-            const qSurf = parent.querySelector('td:nth-child(4)').textContent;
+            const folio = parent.querySelector('td:nth-child(2)').textContent;
+            const libelle = parent.querySelector('td:nth-child(3)').textContent;
+            const prix = parent.querySelector('td:nth-child(4)').textContent;
+            const qSurf = parent.querySelector('td:nth-child(6)').textContent;
             const qRes = parent.querySelector('td:nth-child(5)').textContent;
             const famille = parent.getAttribute('data-key');
 
             // Ajustement du folio
             const folioCorrect = parseInt(folio.replace(' ', ''));
+            console.log(folioCorrect);
 
             // Insertion des elements dans le placeholder
             document.forms[1].folio.value = `Folio: ${folio}`;
@@ -184,7 +185,7 @@
                 document.forms[1].q_res.value = qRes;
             }
 
-            document.forms[1].action += `${folioCorrect}`;
+            document.forms[1].action = `<?= site_url('inventoriste/ajouter_quantite/') ?>${folioCorrect}`;
         })
     </script>
 </body>

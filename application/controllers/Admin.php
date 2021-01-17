@@ -67,6 +67,8 @@ class Admin extends CI_Controller {
 
         $activites = $this->activite_model->toutes_les_activite();
 
+        $montant_final = 0;
+
         foreach ($activites as $activite)
         {
             $total_montant = 0;
@@ -85,10 +87,12 @@ class Admin extends CI_Controller {
             }
 
             $activite->total_montant = $total_montant;
+            $montant_final += $total_montant;
         }
 
         $data = [
-            "activites" => $activites
+            "activites" => $activites,
+            "montant_total" => $montant_final
         ];
 
         $this->load->view('admin/recapitulatif', $data);

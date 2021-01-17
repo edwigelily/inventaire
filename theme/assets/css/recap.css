@@ -60,6 +60,8 @@ header {
 }
 .nom_activite h3{
 	text-align: center;
+	margin-top: 1.2em;
+	margin-bottom: 0;
 }
 /*************fin header********************/
 main {
@@ -70,7 +72,7 @@ main {
 .table_data {
 	width: 100%;
 	padding-top: 10px;
-	margin-top: 1em;
+	/* margin-top: 1em; */
 }
 .table_totaux {
 	width: 50%;
@@ -94,4 +96,9 @@ tfoot tr td {
 }
 .table_totaux tfoot tr td {
 	border: 1px solid #000;
+}
+
+.montant-total{
+	font-weight: bold;
+	margin-left: 1em;
 }
