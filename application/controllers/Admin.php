@@ -297,6 +297,50 @@ class Admin extends CI_Controller {
         $this->load->view('admin/listing', $data);
     }
 
+    public function fiche_de_gamme()
+    {
+        // Creation du fichier html
+        $familles = $this->famille_model->toutes_les_familles();
+
+        foreach($familles as $famille){
+
+            // On recupere les produits d'une famille
+            $famille->produits = $this->produit_model->lister_produit_qte_famille($famille->code_fam);
+
+            // On recupere le montant total
+
+            $prix_produits = array_map(function($prod){
+                return ($prod->q_surf + $prod->q_res) * $prod->prix;
+            }, $famille->produits);
+
+            $famille->montant = array_sum($prix_produits);
+        }
+
+        $data = [
+            "familles" => $familles,
+        ];
+
+        $html = $this->load->view('admin/fiche_de_gamme', $data);
+        // create the API client instance
+        $client = new \Pdfcrowd\HtmlToPdfClient("dynamo63", "6fff217b12496240253ac63d409c0a0f");
+    
+        // run the conversion and write the result to a file
+        $pdf = $client->convertString($html->output->get_output());
+
+        $nom_gamme = "Inventaire_G043_" . date("Y-m-d H:i:s");
+    
+        header("Content-Type: application/pdf");
+        header("Cache-Control: no-cache");
+        header("Accept-Ranges: none");
+        header("Content-Disposition: inline; filename=\"$nom_gamme" . ".pdf\"");
+    
+        echo $pdf;
+    }
+
+    public function export_fiche()
+    {
+    }
+
     public function gestion_compte()
     {
         // Authentification

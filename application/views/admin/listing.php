@@ -58,12 +58,8 @@
                         </div>
                         <div class="modal-body">
                             <a href="<?= site_url('admin/fiche_recapitulatif') ?>" class="btn btn-success btn-lg btn-block">Generer la fiche recap</a>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block">Generer la fiche de Gamme</button>
+                            <a href="<?= site_url('admin/fiche_de_gamme') ?>" class="btn btn-secondary btn-lg btn-block">Generer la fiche de Gamme</a>
                         </div>
-                        <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-success">Valider</button>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -79,8 +75,6 @@
                             <th>quantité en magasin</th>
                             <th>total</th>
                         </tr>
-
-                        
                     </thead>
                     <tbody>
                         <?php if (!empty($familles)): 
