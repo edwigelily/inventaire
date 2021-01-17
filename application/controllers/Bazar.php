@@ -204,4 +204,61 @@ class Bazar extends CI_Controller
         }
 
     }
+
+    public function edwige_bazar()
+    {
+        $spreadsheetId = "14s8DJwxyNoZ_E9mOD9HlYFPFYSTxgwwg6wfNMtva4Y8";
+
+        $activite = [
+            "nom_act" => "Droguerie",
+            "code_act" => 4,
+            "id_cat" => 4
+        ];
+
+        if (!$this->activite_model->rechercher(4)) {
+            // Insertion de l'activite
+            $this->activite_model->ajouter_activite($activite);
+        }
+
+        // Lecture des donnees - Famille epicerie
+        $range = "Famille!A4:C11";
+
+        $response = $this->service->spreadsheets_values->get($spreadsheetId, $range);
+        $values = $response->getValues();  
+        
+        foreach ($values as $row)
+        {
+            if (!$this->famille_model->rechercher($row[1])) {
+                $famille = [
+                    "nom" => $row[0],
+                    "code_fam" => $row[1],
+                    "code_act" => 4
+                ];
+
+                $this->famille_model->ajouter_famille($famille);
+            }
+        }
+
+        // Insertion des produits
+        // Lecture des donnees - Famille epicerie
+        $range2 = "Produit!A4:D382";
+
+        $response2 = $this->service->spreadsheets_values->get($spreadsheetId, $range2);
+        $values2 = $response2->getValues();  
+        
+        foreach ($values2 as $row2)
+        {
+            $produit = [
+                "code_fam" => $row2[0],
+                "folio" => $row2[1],
+                "libelle_prod" => $row2[2],
+                "prix" => $row2[3]
+            ];
+
+            if (!$this->produit_model->creer($produit)) {
+                echo $row;
+                die;
+            }
+        }
+    }
 }
