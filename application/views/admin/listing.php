@@ -24,7 +24,7 @@
                         <button type="button" class="btn btn-danger rounded-0">
                             Déconnexion<i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
-                        <button type="button" data-toggle="modal" data-target="#ModalAjouterProduit" class="btn btn-success mt-1 rounded-0">
+                        <button type="button" data-toggle="modal" data-target="#ModalFiche" class="btn btn-success mt-1 rounded-0">
                             Generer le recapitulatif
                         </button>
                     </div>
@@ -52,6 +52,28 @@
                     <a class="banner-link" href="#">Hors Gamme</a>
                 </div>
             </header>
+            <!-- =========================* modal ajouter un produit ===================== -->
+            <!-- Modal -->
+            <div class="modal fade" id="ModalFiche" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2">Recapitulatif</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <a href="<?= site_url('admin/fiche_recapitulatif') ?>" class="btn btn-success btn-lg btn-block">Generer la fiche recap</a>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">Generer la fiche de Gamme</button>
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-success">Valider</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
             <!-- ============================* liste *========================= -->
             <div class="table">
                 <table>
