@@ -82,7 +82,7 @@ class Liquide extends CI_Controller {
 
     public function creation_produits(){
         // Lecture des donnees - Famille epicerie
-        $range = "Produit!A4:D748";
+        $range = "Produit!F5:I496";
 
         $response = $this->service->spreadsheets_values->get($this->spreadsheetId, $range);
         $values = $response->getValues();
@@ -95,7 +95,7 @@ class Liquide extends CI_Controller {
             foreach ($values as $row) {
                 $produit = [
                     "code_fam" => $row[0],
-                    "folio" => $row[1],
+                    "folio" => (int)str_replace(" ", "", $row[1]),
                     "libelle_prod" => $row[2],
                     "prix" => (int)str_replace(" ", "", $row[3])
                 ];
